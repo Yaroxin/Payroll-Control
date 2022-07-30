@@ -1,0 +1,129 @@
+.DayStatTable{
+    margin: 10px auto;
+    color: #808080;
+    width: 90%;
+}
+
+.DayStatTable th,
+td {
+    border: 1px solid #eee;
+    padding: 5px 7px;
+    text-align: center;
+}
+
+.singleDayTable td{
+    padding: 3px 7px;
+}
+
+.DayStatTable td {
+    cursor: default;
+    min-width: 36px;
+    text-align: center;
+}
+.DayStatTable td input {
+    color: #808080;
+}
+
+.DayStatTable tr:hover {
+    background-color: #fbfbfb;
+}
+
+.DayStatTable td:first-child {
+    text-align: left;
+}
+
+.addButtonCell{
+    text-align: center !important;
+}
+
+.DayStatTable tr:first-child,
+.secondTr {
+    background-color: #578798;
+    color: #fff;
+}
+
+.DayStatTable tr:last-child:hover{
+    background-color: #fff;
+}
+
+.singleDayTable,
+.detailTable{
+    margin: 0;
+    width: 100%;
+}
+
+.secondTr th{
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.secondTr:hover {
+    background-color: #578798 !important;
+}
+
+.WorkDayListItem,
+.paySumm {
+    border: none;
+    text-align: center;
+    width: 42px;
+}
+
+.paySumm{
+    text-align: left;
+    font-weight: bold;
+    width: 110px;
+}
+
+.WorkDayListItem:focus {
+    border-bottom: 3px solid #578798;
+    box-sizing: border-box;
+}
+
+.WorkDayListItem {
+    -webkit-appearance: none;
+    font-size: 22px;
+    height: 25px;
+}
+
+.SelectTime {
+    background-color: #578798;
+    border: none;
+    color: #fff;
+}
+
+.InputDate,
+.SelectTime {
+    -webkit-appearance: none;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.InputDate {
+    background-color: #578798;
+    border: none;
+    color: #fff;
+    width: 90%;
+}
+
+.AddButton {
+    background-color: #578798;
+    border: 1px solid #eee;
+    color: #fff !important;
+    cursor: pointer;
+    padding: 5px 10px;
+    -webkit-appearance: none;
+}
+
+.notActiveBtn{
+    background-color: #eee;
+}
+
+.detailTd{
+    font-size: 22px;
+}
+
+.DefPercent{
+    display: inline-block;
+    font-size: 16px;
+}

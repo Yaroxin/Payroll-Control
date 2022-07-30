@@ -1,0 +1,600 @@
+::-webkit-input-placeholder {
+    font-weight: 100;
+    font-style: italic;
+    color: #808080;
+}
+
+::-moz-placeholder {
+    font-weight: 100;
+    font-style: italic;
+    color: #808080;
+}
+
+:-moz-placeholder {
+    font-weight: 100;
+    font-style: italic;
+    color: #808080;
+}
+
+:-ms-input-placeholder {
+    font-weight: 100;
+    font-style: italic;
+    color: #808080;
+}
+
+:focus::-webkit-input-placeholder {
+    color: transparent
+}
+
+:focus::-moz-placeholder {
+    color: transparent
+}
+
+:focus:-moz-placeholder {
+    color: transparent
+}
+
+:focus:-ms-input-placeholder {
+    color: transparent
+}
+
+.loginBlock{
+    background-color: #fff;
+    padding-top: 1px;
+}
+
+.signUpBlock{
+    background-color: #fff;
+    padding: 1px 0 30px 0;
+}
+
+.loginArea{
+    margin: 50px 0;
+}
+
+.signUpArea{
+    margin-top: 5px;
+}
+
+.errorsBar {
+    background-color: rgb(255, 92, 92);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.messageBar {
+    background-color: rgb(123, 211, 123);
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+
+.dbMessage{
+    font-size: 24px;
+}
+
+.LoginForm,
+.signUpForm {
+    overflow: hidden;
+}
+
+.LoginInput,
+.signUpInput,
+.settingsInput {
+    border: 1px solid #eee;
+    color: #808080;
+    display: block;
+    margin: 20px auto;
+    padding: 15px 15px;
+    width: 85%;
+}
+
+.settingsInput{
+    margin: 0px auto;
+    padding: 5px 15px;
+}
+
+.LoginButton,
+.signUpButton {
+    -webkit-appearance: none;
+    border: 1px solid #eee;
+    background-color: #578798;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    padding: 10px 40px;
+    margin: 0 auto;
+}
+
+.LoginButton:hover,
+.signUpButton:hover {
+    border: 1px solid #bababa;
+}
+
+.hide{
+    display: none !important;
+}
+
+.defaultValue{
+    color: #e63030 !important;
+}
+
+.dbValue{
+    color: #76e285 !important;
+}
+
+.wrap{
+    width: 100%;
+    height: 99vh;
+    padding-top: 1px;
+}
+
+.topDecor{
+    background-color: #578798;
+    position: fixed;
+    height: 26vh;
+    width: 100%;
+    z-index: -100;
+}
+
+.bottomDecor{
+    background-color: #fafafa;
+    position: fixed;
+    top: 174px;
+    height: 85%;
+    width: 100%;
+    z-index: -100;
+}
+
+.mainWindow{
+    padding: 0 15px 25px 15px;
+    margin-top: 45px;
+}
+
+.topBar{
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 0 10px #d1d1d1;
+    position: fixed;
+    top: -1px;
+    margin-bottom: 15px;
+    padding: 5px 0;
+    width: 100%;
+}
+
+.userNameModal{
+    color: #578798;
+    margin: 40px auto;
+    min-height: 1px !important;
+}
+
+.userNameModal ul li{    
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.userNameModal ul li a{
+    border-right: 3px solid #578798;
+    display: block;
+    padding: 10px 5px;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.userNameModal ul li a:hover{
+    text-decoration: underline;
+}
+
+.homeInfoBlock{
+    display: flex;
+    justify-content: space-between;
+}
+
+.homeInfoBlockCentr{
+    width: 75%;
+}
+
+
+.mainInfoBlock,
+.userNameModal,
+.topBoard{
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #d1d1d1;
+    min-height: 200px;
+    overflow: hidden;
+    padding: 5px;
+}
+
+.userName{
+    color: #578798;
+    cursor: pointer;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.infoBlockStat, .rateBlock{
+    display: flex;
+    justify-content: space-around;
+}
+
+.rateBlock{
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #d1d1d1;
+    color: #578798;
+    padding: 5px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.rate, .bonus, .upRate{
+  font-size: 28px;  
+}
+
+.bonus{
+    font-size: 46px;
+    font-weight: 700;
+}
+
+.rateDesc, .bonusDesc, .upRateDesc{
+  font-size: 12px;  
+}
+
+.homeInfoBlockStat{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.infoBlockDesc{
+    text-align: center; 
+    font-size: 18px;
+}
+
+.homeAmountPay{
+    margin-top: 20px;
+}
+
+.amountPay,
+.amountHours,
+.amountPerHour,
+.homeAmountPay{
+    color: #578798;
+    text-align: center;
+    font-size: 54px;
+    font-weight: 700;
+    padding: 20px 0;
+}
+
+.diffPayZero{
+    color: #ababab;
+}
+
+.diffPayPlus{
+    color: #83d98e;
+}
+
+.diffPayMinus{
+    color: #eb8787;
+}
+
+.diffPayZero,
+.diffPayPlus,
+.diffPayMinus{
+    font-size: 18px;
+}
+
+.amountHours,
+.amountPerHour{
+    font-size: 36px;
+    font-weight: 100;
+}
+
+.prepaid,
+.salary{
+    font-size: 26px;
+}
+
+
+.actionBlock{
+    display: flex;
+    justify-content: space-around;
+    padding: 25px 0;
+}
+
+.actionBlock a,
+.saveSetButton,
+.mainButton{
+    background-color: #578798;
+    border: 1px solid #eee;
+    border-radius: 7px;
+    box-shadow: 0 0 10px #d1d1d1;
+    color: #fff;
+    cursor: pointer;
+    font-size: 22px;
+    text-align: center;
+    width: 45%;
+    padding: 10px 0;
+}
+
+#savePayout{
+    display: block;
+    margin: 15px auto;
+}
+
+.infoBlockHead{
+    align-items: center;
+    color: #578798;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 100;
+    text-align: center;
+}
+
+.homeInfoBlockHead{
+    align-items: center;
+    color: #578798;
+    font-size: 16px;
+    font-weight: 100;
+    text-align: center;
+}
+
+.selectMonth{
+    background: none;
+    border: none;
+    color: #578798;
+    cursor: pointer;
+    text-align-last: center;
+    text-align: -webkit-center;
+    text-align: center;
+    font-size: 18px;    
+	-webkit-appearance: none;
+	-moz-appearance   : none;
+	text-indent       : 0.01px; 
+	text-overflow     : '';
+	-ms-appearance    : none;
+	appearance        : none !important;
+}
+
+.selectMonth option{
+    background-color: #fff;
+    color: #578798;
+    font-size: 14px;
+    text-align-last: center;
+    text-align: -webkit-center;
+    text-align: center;
+}
+
+.addTypeTab{
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.singleDayTab{
+    margin: 0;
+}
+
+.moduleTab{
+    border: 1px solid #808080;
+    color: #808080;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 7px 0;
+    text-align: center;
+    width: 48%;
+}
+
+.addActiveTab{
+    background-color: #578798;
+    color: #fff;
+}
+
+.listBlockItem{    
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #d1d1d1;
+    color: #578798;   
+    cursor: pointer; 
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.brieflyItemInfo,
+.moreItemInfo,
+.calStatBlock{
+    align-items: center;
+    display: flex;
+    justify-content: space-around;    
+}
+
+.mainShift{
+    border-left: 3px solid #ceffb0;
+}
+
+.extraShift{
+    border-left: 3px solid #fff4b0;
+}
+
+.moreItemsBonus{
+    color: #21872f;
+}
+
+.moreItemsFine{
+    color: #bf1616;
+}
+
+.moreItemInfo{
+    border-top: 1px solid #578798;
+    font-weight: 100;
+    margin-top: 15px;
+    padding-top: 5px;
+}
+
+.itemDesc{
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.workTime,
+.workType{
+    width: 24px;
+}
+
+.workTime img{    
+    width: 90%;
+}
+
+.workType img{
+    width: 100%;
+}
+
+.icons{
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 26px;
+}
+
+.icons:last-child{
+    margin-bottom: 0px;
+}
+
+.infoBlockIcons{
+    height: 100%;
+    width: 100%;
+}
+
+.moduleSetBlock{
+    border: 1px solid #eee;
+    margin-top: 10px;
+}
+
+.moduleSetTitle{
+    background-color: #578798;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 15px;
+}
+
+.setTitle{
+    color: #578798;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.setCheckBox,
+.bonusSettingsLabel{
+    color: #578798;
+    font-size: 18px;
+    padding: 10px;
+}
+
+#bonusSettingsContent{
+    margin-bottom: 20px;
+}
+
+.bonusSettingsLabel{
+    padding: 0px;
+    margin: 15px 0px 0px 15px;
+    display: block;
+}
+
+.notActive{
+    color: #b4b4b4;
+}
+
+.setCheckBox input{
+    margin-right: 10px;
+    height: 18px;
+    width: 18px;
+}
+
+.saveSetButton {
+    display: block;
+    font-size: 16px;
+    margin: 10px auto;
+}
+
+.setModulesBlock{
+    align-content: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+#addPayoutForm{
+    padding-top: 45px;
+    width: 100%;
+}
+
+.addPayoutInputs{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.addPayoutInputs input{
+    color: #578798;
+    text-align: center;
+    font-size: 22px;
+    border: 1px solid #578798;
+    padding: 5px;
+    width: 45%;
+}
+
+.addPayoutDesc{
+    color: #578798;
+    font-size: 20px;
+}
+
+.singleSetting{
+    border: 1px solid #eee;
+}
+
+.singleSettingHead{
+    background-color: #578798;
+    border-radius: 5px;        
+    padding: 10px;
+    margin-top: 15px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#hourlyPayCheck,
+#extraShiftCheck{
+    height: 20px;
+    width: 20px;
+}
+
+.payType{
+    width: 24px;
+}
+
+.payType img{
+    width: 100%;
+}
+
+@media (min-width: 1200px) {
+    .wrapper{
+        margin: 0 auto;
+        width: 40%;
+    }
+}

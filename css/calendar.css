@@ -1,0 +1,71 @@
+.calendar{
+    color: #808080;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.calendar td{
+    padding: 10px;
+}
+
+.calendar thead th{
+    background-color: #578798;
+    border: 1px solid #eee;
+    color: #eee;
+    font-size: 20px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.calStatBlock{
+    color: #578798;
+}
+
+.calItemStat{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.calItemDesc{
+    font-size: 16px;
+    font-weight: 100;
+    margin-top: 5px;
+}
+
+.workDayClass {
+    background-color: #ceffb0;
+    cursor: pointer;
+}
+
+.mixDayClass {
+    background: linear-gradient(135deg, #ceffb0 50%, #b9f7ff 50%);
+    cursor: pointer;
+}
+
+.workNightClass {
+    background-color: #b9f7ff;
+    cursor: pointer;
+}
+
+.workDayClass:hover,
+.workNightClass:hover,
+.mixDayClass:hover {
+    background: #578798;
+    color: #fff;
+} 
+
+
+.dayOffClass{
+    background-color: #fff6f6;
+}
+
+.noDaysClass{
+    background-color: #fff;
+}
+
+.today{
+    background-color: #578798 ;
+    border: 1px solid #ceffb0;
+    color: #fff;
+}
