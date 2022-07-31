@@ -75,10 +75,33 @@
                 </div>
                 <div class="homeInfoBlockStat">
                     <div class="amountHours"><?php echo $totalHours; ?><div class="infoBlockDesc">часов</div></div>
-                    <div class="amountPerHour"><?php echo $product; ?><div class="infoBlockDesc">комп.</div></div>
+                    <div class="amountPerHour hide"><?php echo $product; ?><div class="infoBlockDesc">комп.</div></div>
                     <div class="amountPerHour"><?php echo $totalPPH; ?><div class="infoBlockDesc">&#8381;/час</div></div>                        
                 </div>
             </div>
+
+
+
+            <?php if($settings[14]['value'] == '1'): ?>
+            <div class="rateBlock">
+                <div class="rate">
+                    <?php echo $TotalItemsPerHour; ?>
+                    <div class="rateDesc">ед./час</div>
+                </div>
+                <div class="bonus">
+                    <?php echo $product; ?>
+                    <div class="bonusDesc">комп.</div>
+                </div>
+                <div class="upRate">
+                    <?php echo $TotalMoneyPerItem; ?>
+                    <div class="upRateDesc">&#8381;/ед.</div>
+                </div>
+            </div>
+            <?php endif; ?>
+
+
+
+            <?php if($settings[13]['value'] == '1'): ?>
             <div class="rateBlock">
                 <div class="rate">
                     <?php echo $totalRate; ?>
@@ -93,6 +116,14 @@
                     <div class="upRateDesc">до премии</div>
                 </div>
             </div>
+            <?php endif; ?>
+
+
+
+
+
+
+
             <div class="actionBlock">
                 <a href="add.php">Добавить</a>
                 <a href="detail.php?month=<?php echo $selectDate['mon']; ?>&year=<?php echo $selectDate['year']; ?>">Подробнее</a>

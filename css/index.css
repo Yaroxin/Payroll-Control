@@ -95,8 +95,9 @@
 }
 
 .settingsInput{
-    margin: 0px auto;
-    padding: 5px 15px;
+    margin: 5px auto;
+    padding: 5px;
+    font-size: 20px;
 }
 
 .LoginButton,
@@ -246,12 +247,12 @@
 }
 
 .rateDesc, .bonusDesc, .upRateDesc{
-  font-size: 12px;  
+  font-size: 16px;  
 }
 
 .homeInfoBlockStat{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 0px 10px;
 }
 
@@ -502,18 +503,38 @@
 .bonusSettingsLabel{
     color: #578798;
     font-size: 18px;
-    padding: 10px;
+    padding-left: 10px;
 }
 
 #bonusSettingsContent{
     margin-bottom: 20px;
 }
 
-.bonusSettingsLabel{
+/* .bonusSettingsLabel{
     padding: 0px;
     margin: 15px 0px 0px 15px;
     display: block;
+} */
+
+.extraBlocks{
+    border: 1px solid #578798;
+    height: 26px;
+    width: 26px;
 }
+
+.extraBlocksLabel{
+    color: #578798;
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+.settingBlock{
+    align-items: center;
+    display: flex;
+    justify-content: start;
+    margin-top: 25px;
+}
+
 
 .notActive{
     color: #b4b4b4;
@@ -528,7 +549,7 @@
 .saveSetButton {
     display: block;
     font-size: 16px;
-    margin: 10px auto;
+    margin: 35px auto 20px auto;
 }
 
 .setModulesBlock{

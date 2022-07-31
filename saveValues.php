@@ -39,6 +39,7 @@ if (!empty($_POST["workDayId"]) && !empty($_POST["workDayTable"])) {
                     $workday['hourlypay'] = 0;
                 }
 
+                $workday['date'] = $_POST["changeDate"];
                 $workday['hours'] = $_POST["Hours"];
                 $workday['st'] = $_POST["st"];
                 $workday['stcost'] = $_POST["stcost"];
@@ -51,7 +52,7 @@ if (!empty($_POST["workDayId"]) && !empty($_POST["workDayTable"])) {
                 $workday['bonus'] = $_POST["bonus"];
                 $workday['fine'] = $_POST["fine"]; 
                 R::store($workday);
-                $result = ('Запись сохранена.');    
+                $result = ('Запись сохранена.');  
             }else{
                 R::trash($workday);
                 $result = ('Запись удалена.');

@@ -66,6 +66,10 @@
             </td>
             <td><input id="extraShiftValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $bending['extrashift']; ?>" maxlength="4" disabled></td>
         </tr>
+        <tr id="changeDateTr" class="hide">
+            <td>Дата</td>
+            <td colspan="2"><input id="changeDate" class="InputDate changeInputDate" type="date" name="changeDate" disabled value="<?php echo $bending['date']?>"></td>
+        </tr> 
         <tr>
             <td colspan="3"></td>
         </tr> 

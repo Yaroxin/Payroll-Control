@@ -7,6 +7,8 @@ $totalRate = 0;
 $upRate = 0;
 $bonus = 0;
 $product = 0;
+$TotalItemsPerHour = 0;
+$TotalMoneyPerItem = 0;
 
 $bendingPay = 0;
 $bendingFine = 0;
@@ -102,6 +104,9 @@ if ($totalRate > 0){
 $amountPay = $payment['prepaid'] + $payment['salary'] + $payment['bonus'];
 $diffPay = $amountPay - $totalPay;
 
+$TotalItemsPerHour = $product / $totalHours;
+$TotalMoneyPerItem = $totalPay / $product;
+
 ///// End TOTAL Stat /////
 
 
@@ -121,6 +126,8 @@ $totalRate = number_format($totalRate, 0, ',', ' ');
 $upRate = number_format($upRate, 0, ',', ' ');
 $product = number_format($product, 0, ',', ' ');
 
+$TotalItemsPerHour = number_format($TotalItemsPerHour, 2, ',', ' ');
+$TotalMoneyPerItem = number_format($TotalMoneyPerItem, 2, ',', ' ');
 
 
 if($payment){

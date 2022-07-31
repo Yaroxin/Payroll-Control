@@ -30,7 +30,9 @@ $defaultSettings = [
     'rate'      => '0',
     'bonus'     => '0',
     'hourlyPay'     => '0',
-    'extraShift'     => '300',
+    'extraShift'     => '0',
+    'bonusBlock'     => '0',
+    'productBlock'     => '0',
 ];
 
 $ruMonthsName = [

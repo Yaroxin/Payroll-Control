@@ -43,31 +43,95 @@
                             </form>
                         </div>
                     </div>
-                    <form id="settingsForm" action="" method="POST">                      
-                        <label class="bonusSettingsLabel" for="rate">Item #1:</label>
-                        <input id="Item1Name" class="settingsInput" type="text" value="<?php echo $settings[1]['value']; ?>" name="itemName1" placeholder="Item #1">
-                        <label class="bonusSettingsLabel" for="rate">Item #2:</label>
-                        <input id="Item2Name" class="settingsInput" type="text" value="<?php echo $settings[2]['value']; ?>" name="itemName2" placeholder="Item #2">
-                        <label class="bonusSettingsLabel" for="rate">Item #3:</label>
-                        <input id="Item3Name" class="settingsInput" type="text" value="<?php echo $settings[3]['value']; ?>" name="itemName3" placeholder="Item #3">
-                        <label class="bonusSettingsLabel" for="rate">Item #4:</label>
-                        <input id="Item4Name" class="settingsInput" type="text" value="<?php echo $settings[4]['value']; ?>" name="itemName4" placeholder="Item #4">                        
-                        <label class="bonusSettingsLabel" for="rate"><?php echo $settings[1]['value']; ?> цена:</label>
-                        <input id="Item1Cost" class="settingsInput" type="text" value="<?php echo $settings[5]['value']; ?>" name="itemCost1" placeholder="Item #1 Cost">
-                        <label class="bonusSettingsLabel" for="rate"><?php echo $settings[2]['value']; ?> цена:</label>
-                        <input id="Item2Cost" class="settingsInput" type="text" value="<?php echo $settings[6]['value']; ?>" name="itemCost2" placeholder="Item #2 Cost">
-                        <label class="bonusSettingsLabel" for="rate"><?php echo $settings[3]['value']; ?> цена:</label>
-                        <input id="Item3Cost" class="settingsInput" type="text" value="<?php echo $settings[7]['value']; ?>" name="itemCost3" placeholder="Item #3 Cost">
-                        <label class="bonusSettingsLabel" for="rate"><?php echo $settings[4]['value']; ?> цена:</label>
-                        <input id="Item4Cost" class="settingsInput" type="text" value="<?php echo $settings[8]['value']; ?>" name="itemCost4" placeholder="Item #4 Cost">
-                        <label class="bonusSettingsLabel" for="rate">Норма ед.:</label>
-                        <input id="rate" class="settingsInput" type="text" value="<?php echo $settings[9]['value']; ?>" name="rate" placeholder="Норма">
-                        <label class="bonusSettingsLabel" for="bonus">Премия, %:</label>
-                        <input id="bonus" class="settingsInput" type="text" value="<?php echo $settings[10]['value']; ?>" name="bonus" placeholder="Премия %">
-                        <label class="bonusSettingsLabel" for="hourlypay">Цена/час:</label>
-                        <input id="hourlypay" class="settingsInput" type="text" value="<?php echo $settings[11]['value']; ?>" name="hourlyPay" placeholder="Цена/час">
-                        <label class="bonusSettingsLabel" for="extrashift">Доп. смена:</label>
-                        <input id="extrashift" class="settingsInput" type="text" value="<?php echo $settings[12]['value']; ?>" name="extrashift" placeholder="Доп. смена">
+                    <form id="settingsForm" action="" method="POST"> 
+                    
+                        <div class="settingBlock">
+                            <div class="settingBlockLeft">
+                                <label class="bonusSettingsLabel" for="rate">Item #1:</label>
+                                <input id="Item1Name" class="settingsInput" type="text" value="<?php echo $settings[1]['value']; ?>" name="itemName1" placeholder="Название">
+                            </div>
+                            <div class="settingBlockRight">
+                                <label class="bonusSettingsLabel" for="rate"><?php echo $settings[1]['value']; ?> цена:</label>
+                                <input id="Item1Cost" class="settingsInput" type="text" value="<?php echo $settings[5]['value']; ?>" name="itemCost1" placeholder="Цена">
+                            </div>                            
+                        </div>
+
+                        <div class="settingBlock">
+                            <div class="settingBlockLeft">
+                                <label class="bonusSettingsLabel" for="rate">Item #2:</label>
+                                <input id="Item2Name" class="settingsInput" type="text" value="<?php echo $settings[2]['value']; ?>" name="itemName2" placeholder="Item #2">
+                            </div>
+                            <div class="settingBlockRight">
+                                <label class="bonusSettingsLabel" for="rate"><?php echo $settings[2]['value']; ?> цена:</label>
+                                <input id="Item2Cost" class="settingsInput" type="text" value="<?php echo $settings[6]['value']; ?>" name="itemCost2" placeholder="Item #2 Cost">
+                            </div>                            
+                        </div>
+                        
+                        <div class="settingBlock">
+                            <div class="settingBlockLeft">
+                                <label class="bonusSettingsLabel" for="rate">Item #3:</label>
+                                <input id="Item3Name" class="settingsInput" type="text" value="<?php echo $settings[3]['value']; ?>" name="itemName3" placeholder="Item #3">
+                            </div>
+                            <div class="settingBlockRight">
+                                <label class="bonusSettingsLabel" for="rate"><?php echo $settings[3]['value']; ?> цена:</label>
+                                <input id="Item3Cost" class="settingsInput" type="text" value="<?php echo $settings[7]['value']; ?>" name="itemCost3" placeholder="Item #3 Cost">
+                            </div>                            
+                        </div>
+                        
+                        <div class="settingBlock">
+                            <div class="settingBlockLeft">
+                                <label class="bonusSettingsLabel" for="rate">Item #4:</label>
+                                <input id="Item4Name" class="settingsInput" type="text" value="<?php echo $settings[4]['value']; ?>" name="itemName4" placeholder="Item #4">                        
+                            </div>
+                            <div class="settingBlockRight">
+                                <label class="bonusSettingsLabel" for="rate"><?php echo $settings[4]['value']; ?> цена:</label>
+                                <input id="Item4Cost" class="settingsInput" type="text" value="<?php echo $settings[8]['value']; ?>" name="itemCost4" placeholder="Item #4 Cost">
+                            </div>                            
+                        </div>
+
+                        <div class="settingBlock">
+                            <div class="settingBlockLeft">
+                                <label class="bonusSettingsLabel" for="rate">Норма ед.:</label>
+                                <input id="rate" class="settingsInput" type="text" value="<?php echo $settings[9]['value']; ?>" name="rate" placeholder="Норма">
+                            </div>
+                            <div class="settingBlockRight">
+                                <label class="bonusSettingsLabel" for="hourlypay">Цена/час:</label>
+                                <input id="hourlypay" class="settingsInput" type="text" value="<?php echo $settings[11]['value']; ?>" name="hourlypay" placeholder="Цена/час">
+                            </div>                            
+                        </div>
+
+                        <div class="settingBlock">
+                            <div class="settingBlockLeft">
+                                <label class="bonusSettingsLabel" for="extrashift">Доп. смена:</label>
+                                <input id="extrashift" class="settingsInput" type="text" value="<?php echo $settings[12]['value']; ?>" name="extrashift" placeholder="Доп. смена">
+                            </div>
+                            <div class="settingBlockRight">
+                                <label class="bonusSettingsLabel" for="bonus">Премия, %:</label>
+                                <input id="bonus" class="settingsInput" type="text" value="<?php echo $settings[10]['value']; ?>" name="bonus" placeholder="Премия %">
+                            </div>                            
+                        </div>                        
+                        
+                        <div class="settingBlock">
+                            <?php if($settings[13]['value'] == '0'): ?>
+                                <input id="bonusBlock" class="extraBlocks" type="checkbox" name="bonusBlock">
+                            <?php endif; ?>
+                            <?php if($settings[13]['value'] == '1'): ?>
+                                <input id="bonusBlock" class="extraBlocks" type="checkbox" checked name="bonusBlock">
+                            <?php endif; ?>
+                                <label class="extraBlocksLabel" for="bonusBlock">Показывать блок: "Примия"</label>
+                                <input id="bonusBlockHidden" type="hidden" name="bonusBlock" value="<?php echo $settings[13]['value']; ?>">
+                        </div>
+
+                        <div class="settingBlock">
+                            <?php if($settings[14]['value'] == '0'): ?>
+                                <input id="productBlock" class="extraBlocks" type="checkbox" name="productBlock">
+                            <?php endif; ?>
+                            <?php if($settings[14]['value'] == '1'): ?>
+                                <input id="productBlock" class="extraBlocks" type="checkbox" checked name="productBlock">
+                            <?php endif; ?>                              
+                                <label class="extraBlocksLabel" for="productBlock">Показывать блок: "Продукция"</label>
+                                <input id="productBlockHidden" type="hidden" name="productBlock" value="<?php echo $settings[14]['value']; ?>">
+                        </div>                     
 
                         <input id="saveSettings" class="saveSetButton" type="submit" name="saveSettings" value="Сохранить">
                     

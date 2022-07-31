@@ -1,3 +1,27 @@
+$( "#bonusBlock" ).click(function() { 
+    let bonusBlockHidden = document.getElementById('bonusBlockHidden');
+
+    if (this.checked == true){
+        bonusBlockHidden.value = "1";        
+    }
+
+    if (this.checked == false){
+        bonusBlockHidden.value = "0";
+    }
+});
+
+$( "#productBlock" ).click(function() { 
+    let productBlockHidden = document.getElementById('productBlockHidden');
+
+    if (this.checked == true){
+        productBlockHidden.value = "1";        
+    }
+
+    if (this.checked == false){
+        productBlockHidden.value = "0";
+    }
+});
+
 $(document).ready(function () {    
     $('.WorkDayListItem').focus(function () {
         if (this.value < '1') {
@@ -114,8 +138,7 @@ function summCalc(type) {
 
 
 function editValues(tableId) {
-    let table = document.getElementById(tableId);
-
+    let table = document.getElementById(tableId);    
     let inputs = table.getElementsByTagName('input');
     
     for (let input of inputs) {
@@ -125,10 +148,12 @@ function editValues(tableId) {
     if(tableId == 'addBendingTable'){
         let editBendingDay = document.getElementById('editBendingDay');
         let saveBendingValues = document.getElementById('saveBendingValues'); 
+        let changeDateTr = document.getElementById('changeDateTr');
         editBendingDay.disabled = true;
         editBendingDay.classList.add("notActiveBtn");
         saveBendingValues.disabled = false;
         saveBendingValues.classList.remove("notActiveBtn");
+        changeDateTr.classList.toggle('hide');
     }
 
     if(tableId == 'addHourlyTable'){
@@ -153,7 +178,8 @@ function saveValues(formId, tableId) {
             success: function (response) {
                 result = jQuery.parseJSON(response);
                 alert(result);
-                document.location.reload()             
+                // document.location.reload()             
+                document.location = '/';            
             },
             error: function (response) {
                 alert('Ошибка');
@@ -340,7 +366,9 @@ function clearInput(valueName) {
 
 $( "#userSettings" ).click(function() {
     let user = document.getElementById('userSettingsContent');
+    let settingsForm = document.getElementById('settingsForm');
     user.classList.toggle('hide');
+    settingsForm.classList.toggle('hide');
 });
 
 
