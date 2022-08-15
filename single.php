@@ -6,7 +6,9 @@
     require "userDB.php";
     require "config.php";
     include_once "singleDayStat.php";   
-    $settings = R::findAll('settings'); 
+    $settings = R::findAll('settings');
+    $items = R::findAll('item');
+    
 ?>
 
 <!DOCTYPE html>

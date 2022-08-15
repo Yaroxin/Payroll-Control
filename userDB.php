@@ -2,8 +2,8 @@
     $userDB = [
         'name' => $_SESSION['logged_user'] -> dbname,
         'host' => '127.0.0.1',
-        'login' => 'root',
-        'password' => 'root',
+        'login' => 'yaroxin',
+        'password' => 'Ya35792817',
     ];
 
     R::addDatabase($userDB['name'], sprintf('mysql:host='.$userDB['host'].';dbname='.$userDB['name']), $userDB['login'], $userDB['password']);

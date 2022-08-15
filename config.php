@@ -1,7 +1,7 @@
 <?php
 
 $APP_NAME = 'Payroll Control';
-$VERSION = "0.9 Beta";
+$VERSION = "0.9.1 Beta";
 
 $RATE = 65;
 $RATE_PER_HOUR = $RATE / 11 ;
@@ -19,14 +19,6 @@ if (isset($_GET["month"]) && isset($_GET["year"])){
 $dateOfGet = date( "Y-m-d", strtotime($_GET['year'].'-'.$_GET['month'].'-'.$_GET['day'] ) );
 
 $defaultSettings = [
-    'itemName1' => 'Item #1',
-    'itemName2' => 'Item #2',
-    'itemName3' => 'Item #3',
-    'itemName4' => 'Item #4',
-    'itemCost1' => '0',
-    'itemCost2' => '0',
-    'itemCost3' => '0',
-    'itemCost4' => '0',
     'rate'      => '0',
     'bonus'     => '0',
     'hourlyPay'     => '0',

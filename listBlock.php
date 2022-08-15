@@ -63,12 +63,16 @@
                         <div class="itemDesc">перек. верх</div>
                     </div>
                     <div class="moreItems">
-                    <?php echo $pnCount ;?>
+                        <?php echo $pnCount ;?>
                         <div class="itemDesc">перк. низ</div>
                     </div>                    
                     <div class="moreItems">
                         <?php echo $noCount ;?>
                         <div class="itemDesc">нал. окна</div>
+                    </div>
+                    <div class="moreItems">
+                        <?php echo $item5Count ;?>
+                        <div class="itemDesc">другое</div>
                     </div>
                     <div class="moreItems moreItemsBonus">
                         <?php echo $bonus; ?>

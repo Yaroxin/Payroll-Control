@@ -23,7 +23,7 @@ if (!empty($_POST["workDayId"]) && !empty($_POST["workDayTable"])) {
         }
 
         if($_POST["workDayTable"] == 'bending'){
-            $val =  $_POST["st"] + $_POST["pv"] + $_POST["pn"] + $_POST["on"] + $_POST["no"];
+            $val =  $_POST["item1count"] + $_POST["item2count"] + $_POST["item3count"] + $_POST["item4count"] + $_POST["item5count"];
 
             if($_POST["Hours"] != 0 && $val != 0){
 
@@ -41,16 +41,24 @@ if (!empty($_POST["workDayId"]) && !empty($_POST["workDayTable"])) {
 
                 $workday['date'] = $_POST["changeDate"];
                 $workday['hours'] = $_POST["Hours"];
-                $workday['st'] = $_POST["st"];
-                $workday['stcost'] = $_POST["stcost"];
-                $workday['pv'] = $_POST["pv"];
-                $workday['pvcost'] = $_POST["pvcost"];
-                $workday['pn'] = $_POST["pn"];
-                $workday['pncost'] = $_POST["pncost"];
-                $workday['no'] = $_POST["no"];
-                $workday['nocost'] = $_POST["nocost"];
+                $workday['item1count'] = $_POST["item1count"];
+                $workday['item2count'] = $_POST["item2count"];
+                $workday['item3count'] = $_POST["item3count"];
+                $workday['item4count'] = $_POST["item4count"];
+                $workday['item5count'] = $_POST["item5count"];
+                $workday['item1cost'] = $_POST["item1cost"];
+                $workday['item2cost'] = $_POST["item2cost"];
+                $workday['item3cost'] = $_POST["item3cost"];
+                $workday['item4cost'] = $_POST["item4cost"];
+                $workday['item5cost'] = $_POST["item5cost"];
+                $workday['item1factor'] = $_POST["item1factor"];
+                $workday['item2factor'] = $_POST["item2factor"];
+                $workday['item3factor'] = $_POST["item3factor"];
+                $workday['item4factor'] = $_POST["item4factor"];
+                $workday['item5factor'] = $_POST["item5factor"];
                 $workday['bonus'] = $_POST["bonus"];
-                $workday['fine'] = $_POST["fine"]; 
+                $workday['fine'] = $_POST["fine"];
+                $workday['note'] = $_POST["addNote"];
                 R::store($workday);
                 $result = ('Запись сохранена.');  
             }else{
@@ -62,7 +70,7 @@ if (!empty($_POST["workDayId"]) && !empty($_POST["workDayTable"])) {
     }   
 
 } else{
-    $result = ('Нечего менять! Добавте запись.');
+    $result = ('Нечего менять!');
 }
 
 echo json_encode($result);

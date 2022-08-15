@@ -24,12 +24,12 @@ $( "#productBlock" ).click(function() {
 
 $(document).ready(function () {    
     $('.WorkDayListItem').focus(function () {
-        if (this.value < '1') {
+        if (this.value < '0,01') {
             this.value = '';
         }
     });
     $('.WorkDayListItem').blur(function () {
-        if (this.value < '1') {
+        if (this.value < '0,01') {
             this.value = '0';
         }
     });
@@ -78,11 +78,12 @@ function activateAddButton(type) {
         summ = hourlyPayValue.value * Hours.value ;
     }else{
         if(type == "bending"){
-            let stCount = document.getElementById('stCount');
-            let pvCount = document.getElementById('pvCount');
-            let pnCount = document.getElementById('pnCount');
-            let noCount = document.getElementById('noCount');
-            summ = Number(stCount.value) + Number(pvCount.value) + Number(pnCount.value) + Number(noCount.value);
+            let item1Count = document.getElementById('item1Count');
+            let item2Count = document.getElementById('item2Count');
+            let item3Count = document.getElementById('item3Count');
+            let item4Count = document.getElementById('item4Count');
+            let item5Count = document.getElementById('item5Count');
+            summ = Number(item1Count.value) + Number(item2Count.value) + Number(item3Count.value) + Number(item4Count.value) + Number(item5Count.value);
         }
     }     
     
@@ -115,17 +116,20 @@ function summCalc(type) {
             summ = ((hours * hourlyPayValue) + Bonus) - Fine;
 
         }else{            
-            let stCount = Number((document.getElementById('stCount')).value);
-            let stCost = Number((document.getElementById('stCost')).value);
-            let pvCount = Number((document.getElementById('pvCount')).value);
-            let pvCost = Number((document.getElementById('pvCost')).value);
-            let pnCount = Number((document.getElementById('pnCount')).value);
-            let pnCost = Number((document.getElementById('pnCost')).value);
-            let noCount = Number((document.getElementById('noCount')).value);
-            let noCost = Number((document.getElementById('noCost')).value);
+            let item1Count = Number((document.getElementById('item1Count')).value);
+            let item1Cost = Number((document.getElementById('item1Cost')).value);
+            let item2Count = Number((document.getElementById('item2Count')).value);
+            let item2Cost = Number((document.getElementById('item2Cost')).value);
+            let item3Count = Number((document.getElementById('item3Count')).value);
+            let item3Cost = Number((document.getElementById('item3Cost')).value);
+            let item4Count = Number((document.getElementById('item4Count')).value);
+            let item4Cost = Number((document.getElementById('item4Cost')).value);
+            let item5Count = Number((document.getElementById('item5Count')).value);
+            let item5Cost = Number((document.getElementById('item5Cost')).value);
+
             let fine = Number((document.getElementById('fine')).value);
             let Rub = Number((document.getElementById('Rub').value));            
-            summ = (((stCount * stCost) + (pvCount * pvCost) + (pnCount * pnCost) + (noCount * noCost)) - fine) + Rub;
+            summ = (((item1Count * item1Cost) + (item2Count * item2Cost) + (item3Count * item3Cost) + (item4Count * item4Cost) + (item5Count * item5Cost)) - fine) + Rub;
             
         }
 
@@ -235,7 +239,6 @@ $( "#saveSettings" ).click(function() {
                 if(result == "Success"){
                     document.location.reload();
                 }else{
-                    // alert('Ошибка');
                     alert(result);
                 }                
             },

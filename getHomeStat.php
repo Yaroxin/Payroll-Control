@@ -8,6 +8,7 @@
         $pvCount = 0;
         $pnCount = 0;
         $noCount = 0;
+        $item5Count = 0;
         $itemID = 0;
         $workTitles = [];
         $workTypes = [];
@@ -21,19 +22,21 @@
 
                 if($hourlyPay == 0){
                     $dayBendingSumm = 
-                    ((($bending['st'] * $bending['stcost']) +
-                    ($bending['pv'] * $bending['pvcost']) +
-                    ($bending['pn'] * $bending['pncost']) +
-                    ($bending['no'] * $bending['nocost']) +
+                    ((($bending['item1count'] * $bending['item1cost']) +
+                    ($bending['item2count'] * $bending['item2cost']) +
+                    ($bending['item3count'] * $bending['item3cost']) +
+                    ($bending['item4count'] * $bending['item4cost']) +
+                    ($bending['item5count'] * $bending['item5cost']) +
                     ($bending['bonus'])) - ($bending['fine'])) + $bending['extrashift'];
                 }else{
                     $dayBendingSumm = ((($dayBendingHours * $hourlyPay) + $bending['bonus']) - $bending['fine']) + $bending['extrashift'];
                 }                
 
-                $stCount = $bending['st'];
-                $pvCount = $bending['pv'];
-                $pnCount = $bending['pn'];
-                $noCount = $bending['no'];
+                $stCount = $bending['item1count'];
+                $pvCount = $bending['item2count'];
+                $pnCount = $bending['item3count'];
+                $noCount = $bending['item4count'];
+                $item5Count = $bending['item5count'];
                 $bonus = $bending['bonus'];
                 $fine = $bending['fine'];
                 $itemType = $bending['hourlypay'];

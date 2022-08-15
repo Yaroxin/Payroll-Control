@@ -1,7 +1,7 @@
 <?php
 
     require "lib/rb.php";
-    R::setup( 'mysql:host=127.0.0.1;dbname=work_station', 'root', 'root' );
+    R::setup( 'mysql:host=127.0.0.1;dbname=work_station', 'yaroxin', 'Ya35792817' );
 
     if ( !R::testConnection() ) {
         exit ('Нет соединения с базой данных');

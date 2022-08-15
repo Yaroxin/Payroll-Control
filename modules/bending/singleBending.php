@@ -3,49 +3,36 @@
         <tr class="secondTr">
             <th>Продукция</th>
             <th>Кол-во</th>
+            <th>K.</th>
             <th>Цена</th>
         </tr>
         <tr>
             <td>Часы:</td>
-            <td><input id="bendingHours" inputmode="decimal" class="WorkDayListItem HoursInput" type="text" name="Hours" value="<?php echo $bendingHours; ?>" maxlength="4" disabled></td>
-            <td>-</td>
+            <td colspan="3"><input id="bendingHours" inputmode="decimal" class="WorkDayListItem HoursInput" type="text" name="Hours" value="<?php echo $bendingHours; ?>" maxlength="2" disabled></td>
         </tr>
+
+    <?php foreach($itemRows as $item): ?>
         <tr>
-            <td><?php echo $settings[1]['value']; ?>:</td>
-            <td><input id="stCount" pattern="[0-9]*" class="WorkDayListItem" type="text" name="st" value="<?php echo $stCount; ?>" maxlength="3" disabled></td>
-            <td><input id="stCost" pattern="[0-9]*" class="WorkDayListItem <?php echo $stCostStyle; ?>" type="text" name="stcost" value="<?php echo $stCost; ?>" maxlength="2" disabled></td>
+            <td><?php echo $item['title']; ?>:</td>
+            <td><input id="<?php echo $item['name']; ?>count" pattern="[0-9]{1,3}" class="WorkDayListItem" type="text" name="<?php echo $item['name']; ?>count" value="<?php echo $item['count']; ?>" maxlength="3" disabled></td>
+            <td><input id="<?php echo $item['name']; ?>factor" pattern="\d+(\.\d{1,2})?" class="WorkDayListItem <?php echo $stCostStyle; ?>" type="text" name="<?php echo $item['name']; ?>factor" value="<?php echo $item['factor']; ?>" maxlength="4" disabled></td>
+            <td><input id="<?php echo $item['name']; ?>cost" pattern="[0-9]{1,3}" class="WorkDayListItem <?php echo $stCostStyle; ?>" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" maxlength="3" disabled></td>
         </tr>
-        <tr>
-            <td><?php echo $settings[2]['value']; ?>:</td>
-            <td><input id="pvCount" pattern="[0-9]*" class="WorkDayListItem" type="text" name="pv" value="<?php echo $pvCount; ?>" maxlength="3" disabled></td>
-            <td><input id="pvCost" pattern="[0-9]*" class="WorkDayListItem <?php echo $pvCostStyle; ?>" type="text" name="pvcost" value="<?php echo $pvCost; ?>" maxlength="2" disabled></td>
-        </tr>
-        <tr>
-            <td><?php echo $settings[3]['value']; ?>:</td>
-            <td><input id="pnCount" pattern="[0-9]*" class="WorkDayListItem" type="text" name="pn" value="<?php echo $pnCount; ?>" maxlength="3" disabled></td>
-            <td><input id="pnCost" pattern="[0-9]*" class="WorkDayListItem <?php echo $pnCostStyle; ?>" type="text" name="pncost" value="<?php echo $pnCost; ?>" maxlength="2" disabled></td>
-        </tr>
-        <tr>
-            <td><?php echo $settings[4]['value']; ?>:</td>
-            <td><input id="noCount" pattern="[0-9]*" class="WorkDayListItem" type="text" name="no" value="<?php echo $noCount; ?>" maxlength="3" disabled ></td>
-            <td><input id="noCost" pattern="[0-9]*" class="WorkDayListItem <?php echo $noCostStyle; ?>" type="text" name="nocost" value="<?php echo $noCost; ?>" maxlength="2" disabled></td>
-        </tr>
+    <?php endforeach; ?>
+
         <tr>
             <td>Штраф/Вычет:</td>
-            <td><input id="fine" pattern="[0-9]*" class="WorkDayListItem" type="text" name="fine" value="<?php echo $bendingFine; ?>" maxlength="4" disabled>
-            </td>
-            <td>-</td>
+            <td colspan="3"><input id="fine" pattern="[0-9]*" class="WorkDayListItem" type="text" name="fine" value="<?php echo $bendingFine; ?>" maxlength="4" disabled></td>
         </tr>
         <tr>
             <td>Премия:</td>
-            <td><input id="Rub" pattern="[0-9]*" class="WorkDayListItem" type="text" name="bonus" value="<?php echo $bendingBonus; ?>" maxlength="4" disabled></td>
-            <td>-</td>
+            <td colspan="3"><input id="Rub" pattern="[0-9]*" class="WorkDayListItem" type="text" name="bonus" value="<?php echo $bendingBonus; ?>" maxlength="4" disabled></td>
         </tr>
         <tr>
         <tr>
             <td colspan="3"></td>
         </tr> 
-            <td>Почасовая оплата</td>
+            <td>Почасовая</td>
             <td>
                 <?php if ($bending['hourlypay'] == 0): ?>
                     <input type="checkbox" id="hourlyPayCheck" name="hourlyPayCheck" disabled onchange="clearInput('hourlyPay');">                    
@@ -53,7 +40,7 @@
                     <input type="checkbox" id="hourlyPayCheck" name="hourlyPayCheck" checked disabled onchange="clearInput('hourlyPay');">
                 <?php endif;?>
             </td>
-            <td><input id="hourlyPayValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="hourlyPayValue" value="<?php echo $bending['hourlypay']; ?>" maxlength="4" disabled></td>
+            <td colspan="2"><input id="hourlyPayValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="hourlyPayValue" value="<?php echo $bending['hourlypay']; ?>" maxlength="4" disabled></td>
         </tr> 
         <tr>
             <td>Доп. смена</td>
@@ -64,18 +51,26 @@
                     <input type="checkbox" id="extraShiftCheck" name="extraShiftCheck" checked disabled onchange="clearInput('extraShift');">
                 <?php endif;?>
             </td>
-            <td><input id="extraShiftValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $bending['extrashift']; ?>" maxlength="4" disabled></td>
+            <td colspan="2"><input id="extraShiftValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $bending['extrashift']; ?>" maxlength="4" disabled></td>
         </tr>
-        <tr id="changeDateTr" class="hide">
-            <td>Дата</td>
-            <td colspan="2"><input id="changeDate" class="InputDate changeInputDate" type="date" name="changeDate" disabled value="<?php echo $bending['date']?>"></td>
+        <tr>
+            <td colspan="4"></td>
         </tr> 
         <tr>
-            <td colspan="3"></td>
+            <td colspan="4">                
+                <textarea id="addNote" class="addNote" name="addNote" rows="4" maxlength="300" wrap="hard"><?php echo $bending['note']; ?></textarea>
+            </td>
+        </tr> 
+        <tr id="changeDateTr" class="hide">
+            <td>Дата</td>
+            <td colspan="3"><input id="changeDate" class="InputDate changeInputDate" type="date" name="changeDate" disabled value="<?php echo $bending['date']?>"></td>
+        </tr> 
+        <tr>
+            <td colspan="4"></td>
         </tr> 
         <tr>        
-            <td class="addButtonCell"><input id="editBendingDay" class="AddButton" type="button" name="editBendingDay" value="Изменить" onclick="editValues('addBendingTable');"></td>
-            <td class="addButtonCell" colspan="3"><input id="saveBendingValues" class="AddButton notActiveBtn" type="submit" name="saveBendingValues" value="Сохранить" onclick="saveValues('#addBendingForm', 'addBendingTable');" disabled></td>
+            <td class="addButtonCell" colspan="2"><input id="editBendingDay" class="AddButton" type="button" name="editBendingDay" value="Изменить" onclick="editValues('addBendingTable');"></td>
+            <td class="addButtonCell" colspan="2"><input id="saveBendingValues" class="AddButton notActiveBtn" type="submit" name="saveBendingValues" value="Сохранить" onclick="saveValues('#addBendingForm', 'addBendingTable');" disabled></td>
         </tr>        
     </table>
     <input type="hidden" name="workDayId" value="<?php echo $bending['id']; ?>">

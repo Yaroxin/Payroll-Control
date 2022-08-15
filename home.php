@@ -82,7 +82,7 @@
 
 
 
-            <?php if($settings[14]['value'] == '1'): ?>
+            <?php if($settings[6]['value'] == '1'): ?>
             <div class="rateBlock">
                 <div class="rate">
                     <?php echo $TotalItemsPerHour; ?>
@@ -101,7 +101,7 @@
 
 
 
-            <?php if($settings[13]['value'] == '1'): ?>
+            <?php if($settings[5]['value'] == '1'): ?>
             <div class="rateBlock">
                 <div class="rate">
                     <?php echo $totalRate; ?>

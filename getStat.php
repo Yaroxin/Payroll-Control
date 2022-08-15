@@ -20,6 +20,7 @@ $stCount = 0;
 $pvCount = 0;
 $pnCount = 0;
 $noCount = 0;
+$item5Count = 0;
 
 $workShifts = [];
 $allMonths = [];
@@ -53,17 +54,19 @@ if($bendings){
         $bendingBonus = $bendingBonus + $bending['bonus'];
         $bendingFine = $bendingFine + $bending['fine'];
         
-        $stCount = $stCount + $bending['st'];
-        $pvCount = $pvCount + $bending['pv'];
-        $pnCount = $pnCount + $bending['pn'];
-        $noCount = $noCount + $bending['no']; 
+        $stCount = $stCount + $bending['item1count'];
+        $pvCount = $pvCount + $bending['item2count'];
+        $pnCount = $pnCount + $bending['item3count'];
+        $noCount = $noCount + $bending['item4count']; 
+        $item5Count = $item5Count + $bending['item5count']; 
         
         if($bending['hourlypay'] == 0){
             $bendingPay = $bendingPay +
-            (($bending['st'] * $bending['stcost']) +
-            ($bending['pv'] * $bending['pvcost']) +
-            ($bending['pn'] * $bending['pncost']) +
-            ($bending['no'] * $bending['nocost']) +
+            (($bending['st'] * $bending['item1cost']) +
+            ($bending['pv'] * $bending['item2cost']) +
+            ($bending['pn'] * $bending['item3cost']) +
+            ($bending['no'] * $bending['item4cost']) +
+            ($bending['item5'] * $bending['item5cost']) +
             ($bending['bonus'])) - ($bending['fine']); 
         }else{
             $bendingPay = $bendingPay + (((($bending['hours'] * $bending['hourlypay']) + $bending['bonus']) - $bending['fine'])) + $bending['extrashift'];
@@ -78,17 +81,24 @@ if($bendings){
 $totalHours = ($hourlyHours + $bendingHours);
 $totalPay = ($hourlyPay + $bendingPay);
 
-if ($totalHours > 0){
-    $totalPPH = round($totalPay / $totalHours);
-} else {
-    $totalPPH = 0;
-}
-
 // $product = (($stCount * 0.6) + ($pvCount * 0.2) + ($pnCount * 0.2) + ($noCount * 0.2)) - 0.5;
 $product = $stCount;
 
-$totalRate = $totalHours * $RATE_PER_HOUR;
+if ($totalHours > 0){
+    $totalPPH = round($totalPay / $totalHours);
+    $TotalItemsPerHour = $product / $totalHours;
+} else {
+    $totalPPH = 0;
+    $TotalItemsPerHour = 0;
+}
 
+if ($product > 0){
+    $TotalMoneyPerItem = $totalPay / $product;
+} else {
+    $TotalMoneyPerItem = 0;
+}
+
+$totalRate = $totalHours * $RATE_PER_HOUR;
 
 if ($totalRate > 0){
     $upRate = (($totalRate *1.1) + 0.5) - $product;
@@ -103,9 +113,6 @@ if ($totalRate > 0){
 }
 $amountPay = $payment['prepaid'] + $payment['salary'] + $payment['bonus'];
 $diffPay = $amountPay - $totalPay;
-
-$TotalItemsPerHour = $product / $totalHours;
-$TotalMoneyPerItem = $totalPay / $product;
 
 ///// End TOTAL Stat /////
 

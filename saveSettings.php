@@ -4,6 +4,21 @@
     require "config.php";   
     
     $settings = R::findAll('settings');
+    $items = R::findAll('item');
+
+    if($items){
+        $changedItems = [];
+        foreach ($items as $item){
+            $item['title'] = $_POST[$item['name'] . 'Title'];
+            $item['cost'] = $_POST[$item['name'] . 'Cost'];
+            $item['factor'] = $_POST[$item['name'] . 'Factor'];
+            $changedItems [] = $item;        
+        }    
+        R::storeAll($changedItems);
+        $result = ('Success');
+    }else{
+        $result = ('Error');
+    }
 
     if($settings){
         $newSettings = [];

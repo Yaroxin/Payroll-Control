@@ -85,7 +85,8 @@
 
 .LoginInput,
 .signUpInput,
-.settingsInput {
+.settingsInput,
+.itemInput {
     border: 1px solid #eee;
     color: #808080;
     display: block;
@@ -94,7 +95,18 @@
     width: 85%;
 }
 
-.settingsInput{
+.itemsBlocks{
+    border-bottom: 3px solid #578798;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.itemInputTitle{
+    width: 140px;
+}
+
+.settingsInput,
+.itemInput{
     margin: 5px auto;
     padding: 5px;
     font-size: 20px;
@@ -500,7 +512,8 @@
 }
 
 .setCheckBox,
-.bonusSettingsLabel{
+.bonusSettingsLabel,
+.itemLabel{
     color: #578798;
     font-size: 18px;
     padding-left: 10px;
@@ -528,7 +541,8 @@
     margin-left: 15px;
 }
 
-.settingBlock{
+.settingBlock,
+.itemBlock{
     align-items: center;
     display: flex;
     justify-content: start;
@@ -612,6 +626,22 @@
 .payType img{
     width: 100%;
 }
+
+.addNote{
+    border: none;
+    color: #578798;
+    resize: none;
+    font-style: italic;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
 
 @media (min-width: 1200px) {
     .wrapper{

@@ -1,13 +1,13 @@
 .DayStatTable{
     margin: 10px auto;
     color: #808080;
-    width: 90%;
+    width: 100%;
 }
 
 .DayStatTable th,
 td {
     border: 1px solid #eee;
-    padding: 5px 7px;
+    padding: 5px;
     text-align: center;
 }
 
@@ -22,6 +22,7 @@ td {
 }
 .DayStatTable td input {
     color: #808080;
+    width: 90%;
 }
 
 .DayStatTable tr:hover {
@@ -29,7 +30,9 @@ td {
 }
 
 .DayStatTable td:first-child {
+    font-size: 20px;
     text-align: left;
+    min-width: 130px;
 }
 
 .addButtonCell{
@@ -46,6 +49,10 @@ td {
     background-color: #fff;
 }
 
+.DayStatTable th{
+    font-size: 20px;
+}
+
 .singleDayTable,
 .detailTable{
     margin: 0;
@@ -54,7 +61,6 @@ td {
 
 .secondTr th{
     font-weight: bold;
-    font-size: 16px;
 }
 
 .secondTr:hover {
@@ -70,8 +76,9 @@ td {
 
 .paySumm{
     text-align: left;
+    font-size: 20px;
     font-weight: bold;
-    width: 110px;
+    width: 140px;
 }
 
 .WorkDayListItem:focus {
@@ -81,7 +88,7 @@ td {
 
 .WorkDayListItem {
     -webkit-appearance: none;
-    font-size: 22px;
+    font-size: 20px;
     height: 25px;
 }
 
@@ -95,7 +102,7 @@ td {
 .SelectTime {
     -webkit-appearance: none;
     padding: 0 10px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -118,7 +125,8 @@ td {
     border: 1px solid #eee;
     color: #fff !important;
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 10px 20px;
+    font-size: 20px;
     -webkit-appearance: none;
 }
 
