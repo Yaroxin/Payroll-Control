@@ -42,6 +42,10 @@
             <?php echo $dayHours;?>
             <div class="itemDesc">Часов</div>
         </div>
+        <div class="itemPay">
+        <?php echo $product;?>
+            <div class="itemDesc">Едениц</div>
+        </div>
         <div class="itemPerHour">
             <?php echo $dayPayPerHour ;?>
             <div class="itemDesc">&#8381;/час</div>
@@ -49,7 +53,7 @@
         <div class="itemPay">
             <?php echo $dayPaySumm ;?>
             <div class="itemDesc">Рублей</div>
-        </div>
+        </div>        
     </div>
         <?php foreach($workTT as $title => $type): ?>
             <?php if($title == 'Гиб(Рамы)'): ?>

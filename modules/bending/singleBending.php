@@ -8,7 +8,7 @@
         </tr>
         <tr>
             <td>Часы:</td>
-            <td colspan="3"><input id="bendingHours" inputmode="decimal" class="WorkDayListItem HoursInput" type="text" name="Hours" value="<?php echo $bendingHours; ?>" maxlength="2" disabled></td>
+            <td colspan="3"><input id="bendingHours" inputmode="decimal" class="WorkDayListItem HoursInput" type="text" name="Hours" value="<?php echo $totalHours; ?>" maxlength="2" disabled></td>
         </tr>
 
     <?php foreach($itemRows as $item): ?>
@@ -22,11 +22,11 @@
 
         <tr>
             <td>Штраф/Вычет:</td>
-            <td colspan="3"><input id="fine" pattern="[0-9]*" class="WorkDayListItem" type="text" name="fine" value="<?php echo $bendingFine; ?>" maxlength="4" disabled></td>
+            <td colspan="3"><input id="fine" pattern="[0-9]*" class="WorkDayListItem" type="text" name="fine" value="<?php echo $bending['fine']; ?>" maxlength="4" disabled></td>
         </tr>
         <tr>
             <td>Премия:</td>
-            <td colspan="3"><input id="Rub" pattern="[0-9]*" class="WorkDayListItem" type="text" name="bonus" value="<?php echo $bendingBonus; ?>" maxlength="4" disabled></td>
+            <td colspan="3"><input id="Rub" pattern="[0-9]*" class="WorkDayListItem" type="text" name="bonus" value="<?php echo $bending['bonus']; ?>" maxlength="4" disabled></td>
         </tr>
         <tr>
         <tr>
@@ -41,6 +41,7 @@
                 <?php endif;?>
             </td>
             <td colspan="2"><input id="hourlyPayValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="hourlyPayValue" value="<?php echo $bending['hourlypay']; ?>" maxlength="4" disabled></td>
+            <input type="hidden" id="hourlyPaySet" name="hourlyPaySet" value="<?php echo $settings[3]['value']; ?>">
         </tr> 
         <tr>
             <td>Доп. смена</td>
@@ -52,6 +53,7 @@
                 <?php endif;?>
             </td>
             <td colspan="2"><input id="extraShiftValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $bending['extrashift']; ?>" maxlength="4" disabled></td>
+            <input type="hidden" id="extraShiftSet" name="extraShiftSet" value="<?php echo $settings[4]['value']; ?>">
         </tr>
         <tr>
             <td colspan="4"></td>

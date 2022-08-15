@@ -233,6 +233,12 @@
     text-align: center;
 }
 
+.devClass{
+    background-color: #eb8787;
+    color: #fff;
+    font-weight: 700;
+}
+
 .infoBlockStat, .rateBlock{
     display: flex;
     justify-content: space-around;

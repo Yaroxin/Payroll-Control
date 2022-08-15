@@ -1,10 +1,10 @@
-<div class="topBar">
+<div class="topBar <?=$devClass?>">
     <?php if($_SESSION['logged_user'] -> name): ?>
-    <div class="userName" onclick="showUserArea();"><?php echo $_SESSION['logged_user'] -> name; ?></div>
+    <div class="userName <?=$devClass?>" onclick="showUserArea();"><?php echo $_SESSION['logged_user'] -> name; ?></div>
     <?php elseif($_SESSION['logged_user'] -> login): ?>
-    <div class="userName" onclick="showUserArea();"><?php echo $_SESSION['logged_user'] -> login; ?></div>
+    <div class="userName <?=$devClass?>" onclick="showUserArea();"><?php echo $_SESSION['logged_user'] -> login; ?></div>
     <?php else: ?>
-    <div class="userName" onclick="showUserArea();"><?php echo $_SESSION['logged_user'] -> email; ?></div>
+    <div class="userName <?=$devClass?>" onclick="showUserArea();"><?php echo $_SESSION['logged_user'] -> email; ?></div>
     <?php endif; ?>
 </div>
 

@@ -78,12 +78,12 @@ function activateAddButton(type) {
         summ = hourlyPayValue.value * Hours.value ;
     }else{
         if(type == "bending"){
-            let item1Count = document.getElementById('item1Count');
-            let item2Count = document.getElementById('item2Count');
-            let item3Count = document.getElementById('item3Count');
-            let item4Count = document.getElementById('item4Count');
-            let item5Count = document.getElementById('item5Count');
-            summ = Number(item1Count.value) + Number(item2Count.value) + Number(item3Count.value) + Number(item4Count.value) + Number(item5Count.value);
+            let item1count = document.getElementById('item1count');
+            let item2count = document.getElementById('item2count');
+            let item3count = document.getElementById('item3count');
+            let item4count = document.getElementById('item4count');
+            let item5count = document.getElementById('item5count');
+            summ = Number(item1count.value) + Number(item2count.value) + Number(item3count.value) + Number(item4count.value) + Number(item5count.value);
         }
     }     
     
@@ -116,20 +116,21 @@ function summCalc(type) {
             summ = ((hours * hourlyPayValue) + Bonus) - Fine;
 
         }else{            
-            let item1Count = Number((document.getElementById('item1Count')).value);
-            let item1Cost = Number((document.getElementById('item1Cost')).value);
-            let item2Count = Number((document.getElementById('item2Count')).value);
-            let item2Cost = Number((document.getElementById('item2Cost')).value);
-            let item3Count = Number((document.getElementById('item3Count')).value);
-            let item3Cost = Number((document.getElementById('item3Cost')).value);
-            let item4Count = Number((document.getElementById('item4Count')).value);
-            let item4Cost = Number((document.getElementById('item4Cost')).value);
-            let item5Count = Number((document.getElementById('item5Count')).value);
-            let item5Cost = Number((document.getElementById('item5Cost')).value);
+            let item1count = Number((document.getElementById('item1count')).value);
+            let item2count = Number((document.getElementById('item2count')).value);
+            let item3count = Number((document.getElementById('item3count')).value);
+            let item4count = Number((document.getElementById('item4count')).value);
+            let item5count = Number((document.getElementById('item5count')).value);
+            let item1cost = Number((document.getElementById('item1cost')).value);
+            let item2cost = Number((document.getElementById('item2cost')).value);
+            let item3cost = Number((document.getElementById('item3cost')).value);
+            let item4cost = Number((document.getElementById('item4cost')).value);
+            let item5cost = Number((document.getElementById('item5cost')).value);
 
             let fine = Number((document.getElementById('fine')).value);
-            let Rub = Number((document.getElementById('Rub').value));            
-            summ = (((item1Count * item1Cost) + (item2Count * item2Cost) + (item3Count * item3Cost) + (item4Count * item4Cost) + (item5Count * item5Cost)) - fine) + Rub;
+            let Rub = Number((document.getElementById('Rub').value));
+
+            summ = (((item1count * item1cost) + (item2count * item2cost) + (item3count * item3cost) + (item4count * item4cost) + (item5count * item5cost)) - fine) + Rub;
             
         }
 
@@ -182,8 +183,8 @@ function saveValues(formId, tableId) {
             success: function (response) {
                 result = jQuery.parseJSON(response);
                 alert(result);
-                // document.location.reload()             
-                document.location = '/';            
+                document.location.reload();
+                // document.location = '/';            
             },
             error: function (response) {
                 alert('Ошибка');
@@ -362,10 +363,81 @@ $( "#savePayout" ).click(function() {
 function clearInput(valueName) {
     let valueCheck = (document.getElementById(valueName + 'Check')).checked;
 
-    if(valueCheck != 'true'){
+    if(!valueCheck){
         document.getElementById(valueName + 'Value').value = 0;
+    }else{
+        document.getElementById(valueName + 'Value').value = (document.getElementById(valueName + 'Set')).value;        
     }
 }
+
+function numberWithSpaces(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
+
+$( "#extraShiftCheck" ).click(function() {
+    let amountPay = Number(document.getElementById('amountPay').dataset.value);
+    let extraShiftSet = Number(document.getElementById('extraShiftSet').value);
+    let hourlyPayCheck = document.getElementById('hourlyPayCheck').checked;
+    let hourlyPaySet = Number(document.getElementById('hourlyPaySet').value);
+    let hours = Number(document.getElementById('bendingHours').value);
+    let fine = Number(document.getElementById('fine').value);
+    let bonus = Number(document.getElementById('Rub').value);
+
+    let summ = 0;
+    for (let i = 1; i <= 5; i++) {
+        summ += Number(document.getElementById('item' + i + 'count').value) * Number(document.getElementById('item' + i + 'cost').value);
+    }
+    summ = (summ + bonus) - fine;
+
+    if(this.checked){
+        if(hourlyPayCheck){
+            amountPay = hourlyPaySet * hours;
+            document.getElementById('amountPay').innerText = numberWithSpaces((hourlyPaySet * hours) +  extraShiftSet) + ' ₽';
+        }else{
+            document.getElementById('amountPay').innerText = numberWithSpaces(summ +  extraShiftSet) + ' ₽';
+        }        
+    }else{
+        if(hourlyPayCheck){
+            document.getElementById('amountPay').innerText = numberWithSpaces(hourlyPaySet * hours) + ' ₽';
+        }else{
+            document.getElementById('amountPay').innerText = numberWithSpaces(summ) + ' ₽';
+        }
+    }
+    
+});
+
+$( "#hourlyPayCheck" ).click(function() {
+    // let amountPay = Number(document.getElementById('amountPay').dataset.value);
+    let hourlyPaySet = Number(document.getElementById('hourlyPaySet').value);
+    let hours = Number(document.getElementById('bendingHours').value);
+    let extraShiftCheck = document.getElementById('extraShiftCheck').checked;
+
+    let fine = Number(document.getElementById('fine').value);
+    let bonus = Number(document.getElementById('Rub').value);
+    let extraShiftValue = Number(document.getElementById('extraShiftValue').value);
+
+    let summ = 0;
+    for (let i = 1; i <= 5; i++) {
+        summ += Number(document.getElementById('item' + i + 'count').value) * Number(document.getElementById('item' + i + 'cost').value);
+    }
+    summ = (summ + bonus) - fine;
+
+    if(this.checked){
+        if(extraShiftCheck){
+            document.getElementById('amountPay').innerText = numberWithSpaces((hourlyPaySet *  hours) + extraShiftValue) + ' ₽';
+        }else{
+            document.getElementById('amountPay').innerText = numberWithSpaces(hourlyPaySet *  hours) + ' ₽';
+        }       
+    }else{
+        if(extraShiftCheck){
+            document.getElementById('amountPay').innerText = numberWithSpaces(summ + extraShiftValue) + ' ₽';
+        }else{
+            document.getElementById('amountPay').innerText = numberWithSpaces(summ) + ' ₽';
+        }        
+    }
+    
+});
+
 
 $( "#userSettings" ).click(function() {
     let user = document.getElementById('userSettingsContent');

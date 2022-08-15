@@ -90,7 +90,7 @@
                 </div>
                 <div class="bonus">
                     <?php echo $product; ?>
-                    <div class="bonusDesc">комп.</div>
+                    <div class="bonusDesc">едениц</div>
                 </div>
                 <div class="upRate">
                     <?php echo $TotalMoneyPerItem; ?>

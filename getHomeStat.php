@@ -9,6 +9,7 @@
         $pnCount = 0;
         $noCount = 0;
         $item5Count = 0;
+        $product = 0;
         $itemID = 0;
         $workTitles = [];
         $workTypes = [];
@@ -19,6 +20,12 @@
                 $dayBendingHours = $dayBendingHours + $bending['hours'];
 
                 $hourlyPay = $bending['hourlypay'];
+
+                $product += ($bending['item1count'] * $bending['item1factor']) +
+                            ($bending['item2count'] * $bending['item2factor']) +
+                            ($bending['item3count'] * $bending['item3factor']) +
+                            ($bending['item4count'] * $bending['item4factor']) +
+                            ($bending['item5count'] * $bending['item5factor']);
 
                 if($hourlyPay == 0){
                     $dayBendingSumm = 
@@ -52,6 +59,7 @@
         $dayHours = $dayBendingHours;
         $dayPaySumm = number_format($dayBendingSumm, 0, ',', ' ');
         $dayPayPerHour = number_format($dayBendingSumm / $dayHours, 0, ',', ' ');
+        $product = number_format($product, 1, ',', ' ');
         $itemID = date('dmy', strtotime($workShift));
         
 

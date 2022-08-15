@@ -30,9 +30,10 @@
                             <a href="calendar.php?month=<?php echo $selectDate['mon']; ?>&year=<?php echo $selectDate['year']; ?>"><img class="infoBlockIcons" src="img\calendar.png" alt="Calendar"></a>
                         </div>
                     </div>                
-                    <div class="amountPay"><?php echo $totalPay; ?> &#8381;</div>                
+                    <div id="amountPay" class="amountPay" data-value="<?php echo $bendingPay; ?>"><?php echo number_format($bendingPay, 0, ',', ' '); ?> &#8381;</div>                
                     <div class="infoBlockStat">
                         <div class="amountHours"><?php echo $totalHours; ?><div class="infoBlockDesc">часов</div></div>
+                        <div class="amountPerHour"><?php echo $product; ?><div class="infoBlockDesc">едениц</div></div>
                         <div class="amountPerHour"><?php echo $totalPPH; ?><div class="infoBlockDesc">&#8381;/час</div></div>
                     </div>
                     <?php include_once "modules/bending/singleBending.php"; ?>

@@ -9,6 +9,11 @@ $RATE_PER_HOUR = $RATE / 11 ;
 $url_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 $page = $url_parts[0];
 
+if($_SERVER['HOST'] != '3.144.142.223'){
+    $devClass = 'devClass';
+}
+
+
 
 if (isset($_GET["month"]) && isset($_GET["year"])){
     $selectDate = getdate(strtotime($_GET['year'].'-'.$_GET['month']));
