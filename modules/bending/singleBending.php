@@ -58,15 +58,15 @@
         <tr>
             <td colspan="4"></td>
         </tr> 
-        <tr>
-            <td colspan="4">                
-                <textarea id="addNote" class="addNote" name="addNote" rows="4" maxlength="300" wrap="hard"><?php echo $bending['note']; ?></textarea>
-            </td>
-        </tr> 
         <tr id="changeDateTr" class="hide">
             <td>Дата</td>
             <td colspan="3"><input id="changeDate" class="InputDate changeInputDate" type="date" name="changeDate" disabled value="<?php echo $bending['date']?>"></td>
         </tr> 
+        <tr>
+            <td colspan="4">                
+                <textarea id="addNote" class="addNote" name="addNote" rows="4" maxlength="300" wrap="hard"><?php echo $bending['note']; ?></textarea>
+            </td>
+        </tr>         
         <tr>
             <td colspan="4"></td>
         </tr> 

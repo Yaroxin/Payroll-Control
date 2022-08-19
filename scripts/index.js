@@ -144,32 +144,32 @@ function summCalc(type) {
 
 function editValues(tableId) {
     let table = document.getElementById(tableId);    
+    let editBendingDay = document.getElementById('editBendingDay');    
     let inputs = table.getElementsByTagName('input');
-    
-    for (let input of inputs) {
-        input.disabled = false;
-    }
+    let saveBendingValues = document.getElementById('saveBendingValues'); 
+    let changeDateTr = document.getElementById('changeDateTr');
 
-    if(tableId == 'addBendingTable'){
-        let editBendingDay = document.getElementById('editBendingDay');
-        let saveBendingValues = document.getElementById('saveBendingValues'); 
-        let changeDateTr = document.getElementById('changeDateTr');
-        editBendingDay.disabled = true;
-        editBendingDay.classList.add("notActiveBtn");
+    if(editBendingDay.value == 'Изменить'){
+
+        for (let input of inputs) {
+            input.disabled = false;
+        }
         saveBendingValues.disabled = false;
         saveBendingValues.classList.remove("notActiveBtn");
         changeDateTr.classList.toggle('hide');
-    }
+        editBendingDay.value = 'Отмена';
 
-    if(tableId == 'addHourlyTable'){
-        let editHourlyDay = document.getElementById('editHourlyDay');
-        let saveHourlyValues = document.getElementById('saveHourlyValues'); 
-        editHourlyDay.disabled = true;
-        editHourlyDay.classList.add("notActiveBtn");
-        saveHourlyValues.disabled = false;
-        saveHourlyValues.classList.remove("notActiveBtn");
-    }
-
+    }else if (editBendingDay.value == 'Отмена') {
+        
+        for (let input of inputs) {
+            input.disabled = true;
+        }
+        saveBendingValues.disabled = true;
+        saveBendingValues.classList.add("notActiveBtn");
+        changeDateTr.classList.toggle('hide');
+        editBendingDay.disabled = false;
+        editBendingDay.value = 'Изменить';
+      }
 }
 
 function saveValues(formId, tableId) {

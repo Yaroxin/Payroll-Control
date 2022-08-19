@@ -80,8 +80,6 @@
                 </div>
             </div>
 
-
-
             <?php if($settings[6]['value'] == '1'): ?>
             <div class="rateBlock">
                 <div class="rate">
@@ -98,8 +96,6 @@
                 </div>
             </div>
             <?php endif; ?>
-
-
 
             <?php if($settings[5]['value'] == '1'): ?>
             <div class="rateBlock">
@@ -118,15 +114,11 @@
             </div>
             <?php endif; ?>
 
-
-
-
-
-
-
             <div class="actionBlock">
                 <a href="add.php">Добавить</a>
-                <a href="detail.php?month=<?php echo $selectDate['mon']; ?>&year=<?php echo $selectDate['year']; ?>">Подробнее</a>
+            <?php if($bendingsDates): ?>
+                <a href="detail.php">Подробнее</a>
+            <?php endif; ?>
             </div>
             <div class="listBlock">                
                 <ul>
