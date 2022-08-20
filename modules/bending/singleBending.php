@@ -14,19 +14,19 @@
     <?php foreach($itemRows as $item): ?>
         <tr>
             <td><?php echo $item['title']; ?>:</td>
-            <td><input id="<?php echo $item['name']; ?>count" pattern="[0-9]{1,3}" class="WorkDayListItem" type="text" name="<?php echo $item['name']; ?>count" value="<?php echo $item['count']; ?>" maxlength="3" disabled></td>
-            <td><input id="<?php echo $item['name']; ?>factor" pattern="\d+(\.\d{1,2})?" class="WorkDayListItem <?php echo $stCostStyle; ?>" type="text" name="<?php echo $item['name']; ?>factor" value="<?php echo $item['factor']; ?>" maxlength="4" disabled></td>
-            <td><input id="<?php echo $item['name']; ?>cost" pattern="[0-9]{1,3}" class="WorkDayListItem <?php echo $stCostStyle; ?>" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" maxlength="3" disabled></td>
+            <td><input id="<?php echo $item['name']; ?>count" pattern="[0-9]{1,3}" class="WorkDayListItem" type="text" name="<?php echo $item['name']; ?>count" value="<?php echo $item['count']; ?>" inputmode="decimal" maxlength="3" disabled></td>
+            <td><input id="<?php echo $item['name']; ?>factor" pattern="\d+(\.\d{1,2})?" class="WorkDayListItem <?php echo $stCostStyle; ?>" type="text" name="<?php echo $item['name']; ?>factor" value="<?php echo $item['factor']; ?>" inputmode="decimal" maxlength="4" disabled></td>
+            <td><input id="<?php echo $item['name']; ?>cost" pattern="[0-9]{1,3}" class="WorkDayListItem <?php echo $stCostStyle; ?>" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" inputmode="decimal" maxlength="3" disabled></td>
         </tr>
     <?php endforeach; ?>
 
         <tr>
             <td>Штраф/Вычет:</td>
-            <td colspan="3"><input id="fine" pattern="[0-9]*" class="WorkDayListItem" type="text" name="fine" value="<?php echo $bending['fine']; ?>" maxlength="4" disabled></td>
+            <td colspan="3"><input id="fine" pattern="[0-9]*" class="WorkDayListItem" type="text" name="fine" value="<?php echo $bending['fine']; ?>" inputmode="decimal" maxlength="4" disabled></td>
         </tr>
         <tr>
             <td>Премия:</td>
-            <td colspan="3"><input id="Rub" pattern="[0-9]*" class="WorkDayListItem" type="text" name="bonus" value="<?php echo $bending['bonus']; ?>" maxlength="4" disabled></td>
+            <td colspan="3"><input id="Rub" pattern="[0-9]*" class="WorkDayListItem" type="text" name="bonus" value="<?php echo $bending['bonus']; ?>" inputmode="decimal" maxlength="4" disabled></td>
         </tr>
         <tr>
         <tr>
@@ -40,7 +40,7 @@
                     <input type="checkbox" id="hourlyPayCheck" name="hourlyPayCheck" checked disabled onchange="clearInput('hourlyPay');">
                 <?php endif;?>
             </td>
-            <td colspan="2"><input id="hourlyPayValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="hourlyPayValue" value="<?php echo $bending['hourlypay']; ?>" maxlength="4" disabled></td>
+            <td colspan="2"><input id="hourlyPayValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="hourlyPayValue" value="<?php echo $bending['hourlypay']; ?>" inputmode="decimal" maxlength="4" disabled></td>
             <input type="hidden" id="hourlyPaySet" name="hourlyPaySet" value="<?php echo $settings[3]['value']; ?>">
         </tr> 
         <tr>
@@ -52,7 +52,7 @@
                     <input type="checkbox" id="extraShiftCheck" name="extraShiftCheck" checked disabled onchange="clearInput('extraShift');">
                 <?php endif;?>
             </td>
-            <td colspan="2"><input id="extraShiftValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $bending['extrashift']; ?>" maxlength="4" disabled></td>
+            <td colspan="2"><input id="extraShiftValue" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $bending['extrashift']; ?>" inputmode="decimal" maxlength="4" disabled></td>
             <input type="hidden" id="extraShiftSet" name="extraShiftSet" value="<?php echo $settings[4]['value']; ?>">
         </tr>
         <tr>

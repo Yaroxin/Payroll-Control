@@ -57,26 +57,26 @@
     </div>
         <?php foreach($workTT as $title => $type): ?>
             <?php if($title == 'Гиб(Рамы)'): ?>
-                <div id="moreItemInfo<?php echo $itemID; ?>" class="moreItemInfo hide">
+                <div id="moreItemInfo<?php echo $itemID; ?>" class="moreItemInfo hide">                
                     <div class="moreItems">
                         <?php echo $stCount ;?>
-                        <div class="itemDesc">стойки</div>
+                        <div class="itemDesc"><?php echo mb_strtolower($items[1]['title']); ?></div>
                     </div>
                     <div class="moreItems">
                         <?php echo $pvCount;?>
-                        <div class="itemDesc">перек. верх</div>
+                        <div class="itemDesc"><?php echo mb_strtolower($items[2]['title']); ?></div>
                     </div>
                     <div class="moreItems">
                         <?php echo $pnCount ;?>
-                        <div class="itemDesc">перк. низ</div>
+                        <div class="itemDesc"><?php echo mb_strtolower($items[3]['title']); ?></div>
                     </div>                    
                     <div class="moreItems">
                         <?php echo $noCount ;?>
-                        <div class="itemDesc">нал. окна</div>
+                        <div class="itemDesc"><?php echo mb_strtolower($items[4]['title']); ?></div>
                     </div>
                     <div class="moreItems">
                         <?php echo $item5Count ;?>
-                        <div class="itemDesc">другое</div>
+                        <div class="itemDesc"><?php echo mb_strtolower($items[5]['title']); ?></div>
                     </div>
                     <div class="moreItems moreItemsBonus">
                         <?php echo $bonus; ?>

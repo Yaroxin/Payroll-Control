@@ -17,7 +17,7 @@
         
         foreach($bendings as $bending){
             if($bending['date'] == $workShift){
-                $dayBendingHours = $dayBendingHours + $bending['hours'];
+                $dayBendingHours += $bending['hours'];
 
                 $hourlyPay = $bending['hourlypay'];
 

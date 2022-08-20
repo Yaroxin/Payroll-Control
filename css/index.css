@@ -449,6 +449,11 @@
     border-left: 3px solid #fff4b0;
 }
 
+.moreItems{
+    min-height: 47px;
+    max-width: 14%;
+}
+
 .moreItemsBonus{
     color: #21872f;
 }

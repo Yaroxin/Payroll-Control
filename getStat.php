@@ -27,7 +27,7 @@ $workShifts = [];
 $allMonths = [];
 
 $bendings = R::getAll( "SELECT * FROM `bending` WHERE MONTH(date) = ".$selectDate['mon']." AND YEAR(date) =" .$selectDate['year']);
-
+$items = R::findAll('item');
 
 $paymentDate = $selectDate['month'] .' '.$selectDate['year'];
 $payment = R::findOne('payments', 'date = ?', [$paymentDate]);
