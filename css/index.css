@@ -646,12 +646,25 @@
     width: 100%;
 }
 
+.detailTable{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 100%;
+}
 
+.detailTable td{
+    border: 1px solid #eee;
+    color: #808080;
+    font-size: 18px;    
+    padding: 5px;
+}
 
-
-
-
-
+.detailTableHead td,
+.detailTableFooter td{
+    background-color: #578798;
+    color: #fff;
+}
 
 
 @media (min-width: 1200px) {

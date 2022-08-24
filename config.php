@@ -1,6 +1,5 @@
 <?php
-
-//123
+require_once "functions.php";
 
 $APP_NAME = 'Payroll Control';
 $VERSION = "0.9.1 Beta";

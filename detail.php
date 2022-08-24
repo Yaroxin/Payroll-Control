@@ -6,7 +6,6 @@
     require "userDB.php";
     require "config.php";
     include_once "getStat.php";
-    $settings = R::findAll('settings');
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +23,9 @@
                             <div class="icons">
                                 <a href="home.php"><img class="infoBlockIcons" src="img\home.png" alt="Home" title="Home"></a>
                             </div>
+                            <div class="icons">
+                                <a href="#"><img class="infoBlockIcons" src="img\share.png" alt="share" title="share"></a>
+                            </div>
                         </div>
                         <div class="homeInfoBlockCentr">
                             <div class="homeInfoBlockHead">                        
@@ -35,21 +37,7 @@
                                         <?php endforeach; ?>
                                     </select>
                                 </div>                        
-                            </div>                
-                            <div class="homeAmountPay">
-                                <?php echo $totalPay; ?> &#8381;
-                                <?php if($amountPay <> 0): ?>
-                                    <?php if($diffPay > 0): ?>
-                                        <p class="diffPayPlus"><?php echo $amountPay; ?> &#8381; (+ <?php echo number_format($diffPay, 0, ',', ' '); ?> &#8381;)</p>
-                                    <?php endif; ?>
-                                    <?php if($diffPay < 0): ?>
-                                        <p class="diffPayMinus"><?php echo $amountPay; ?> &#8381; (- <?php echo number_format(abs($diffPay), 0, ',', ' '); ?> &#8381;)</p>
-                                    <?php endif; ?>
-                                    <?php if($diffPay == 0): ?>
-                                        <p class="diffPayZero"><?php echo $amountPay; ?> &#8381; (<?php echo number_format(abs($diffPay), 0, ',', ' '); ?> &#8381;)</p>
-                                    <?php endif; ?>
-                                <?php endif; ?>
-                            </div>                        
+                            </div>                       
                         </div>
                         <div class="homeInfoBlockRight">
                             <div class="icons">
@@ -60,56 +48,42 @@
                             </div>
                         </div>                
                     </div>
-                    <div class="homeInfoBlockStat">
-                        <div class="amountHours"><?php echo $totalHours; ?><div class="infoBlockDesc">часов</div></div>
-                        <div class="amountPerHour hide"><?php echo $product; ?><div class="infoBlockDesc">комп.</div></div>
-                        <div class="amountPerHour"><?php echo $totalPPH; ?><div class="infoBlockDesc">&#8381;/час</div></div>                        
-                    </div>
-                </div>
-
-
-
-
-
-
-
-                <div class="brieflyItemInfo extraShift">        
-                    <div class="itemType">
-                        <div class="workTime">
-                            <img src="<?php echo $itemTypeImg; ?>" alt="icon">                  
-                        </div>
-                        <div class="workType">
-                            <img src="<?php echo $itemDescImg; ?>" alt="icon">                  
-                        </div>
-                    </div>
-                    <div class="itemDate">
-                        <?php echo date( "d.m.Y", strtotime($workShift)) ;?>  
-                        <div class="itemDesc">            
-                            <?php echo $title; ?>
-                        </div>
-                    </div>
-                    <div class="itemHours">
-                        <?php echo $dayHours;?>
-                        <div class="itemDesc">Часов</div>
-                    </div>
-                    <div class="itemPay">
-                    <?php echo $product;?>
-                        <div class="itemDesc">Едениц</div>
-                    </div>
-                    <div class="itemPerHour">
-                        <?php echo $dayPayPerHour ;?>
-                        <div class="itemDesc">&#8381;/час</div>
-                    </div>
-                    <div class="itemPay">
-                        <?php echo $dayPaySumm ;?>
-                        <div class="itemDesc">Рублей</div>
-                    </div>        
+                    <table class="detailTable">
+                        <thead>
+                            <tr class="detailTableHead"><td colspan="5">Август 2022 (<?php echo $selectDate['mon']; ?>)</td></tr>
+                            <tr class="detailTableHead">
+                                <td>Дата</td>
+                                <td>Часы</td>
+                                <td>Ед.</td>
+                                <td>Доп. см.</td>
+                                <td>Сумма</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td colspan="5"></td></tr>
+                            <?php foreach($bendings as $bending): ?>
+                            <tr>
+                                <td><?php echo date('d.m.Y', strtotime($bending['date'])); ?></td>
+                                <td><?php echo $bending['hours'] ?></td>
+                                <td><?php echo number_format(getProductCount($bending['date']), 1, ',', ' '); ?></td>
+                                <td><?php echo $bending['extrashift'] ?></td>
+                                <td><?php echo number_format(getDailyPayment($bending['date']), 0, ',', ' '); ?> &#8381;</td>
+                            </tr>
+                            <?php endforeach; ?>
+                            <tr><td colspan="5"></td></tr>
+                        </tbody>
+                        <tfoot>
+                            <tr class="detailTableFooter">
+                                <td>Итого</td>
+                                <td>4 156</td>
+                                <td>1 987</td>
+                                <td>-</td>
+                                <td><?php echo number_format(getMonthlyPayment('08-2022'), 0, ',', ' '); ?> &#8381;</td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
-
-
-
-
         </div>
     </div>
     <?php include_once "getScripts.php"; ?>
