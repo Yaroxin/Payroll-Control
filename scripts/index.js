@@ -446,5 +446,10 @@ $( "#userSettings" ).click(function() {
     settingsForm.classList.toggle('hide');
 });
 
+$( ".detailLink" ).click(function() {
+    expDate = this.id.split('-');
+    document.location = '/single.php?day=' + expDate[2] + '&month=' + expDate[1] + '&year=' + expDate[0];
+});
+
 
 

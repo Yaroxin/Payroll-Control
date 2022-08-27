@@ -23,9 +23,6 @@
                             <div class="icons">
                                 <a href="home.php"><img class="infoBlockIcons" src="img\home.png" alt="Home" title="Home"></a>
                             </div>
-                            <div class="icons">
-                                <a href="#"><img class="infoBlockIcons" src="img\share.png" alt="share" title="share"></a>
-                            </div>
                         </div>
                         <div class="homeInfoBlockCentr">
                             <div class="homeInfoBlockHead">                        
@@ -50,7 +47,7 @@
                     </div>
                     <table class="detailTable">
                         <thead>
-                            <tr class="detailTableHead"><td colspan="5">Август 2022 (<?php echo $selectDate['mon']; ?>)</td></tr>
+                            <tr class="detailTableHead"><td colspan="5"><?php echo $selectDate['month']; ?> <?php echo $selectDate['year']; ?></td></tr>
                             <tr class="detailTableHead">
                                 <td>Дата</td>
                                 <td>Часы</td>
@@ -62,12 +59,12 @@
                         <tbody>
                             <tr><td colspan="5"></td></tr>
                             <?php foreach($bendings as $bending): ?>
-                            <tr>
-                                <td><?php echo date('d.m.Y', strtotime($bending['date'])); ?></td>
+                            <tr class="detailLink" id="<?php echo $bending['date'] ?>">
+                                <td><?php echo date('d.m.y', strtotime($bending['date'])); ?></td>
                                 <td><?php echo $bending['hours'] ?></td>
                                 <td><?php echo number_format(getProductCount($bending['date']), 1, ',', ' '); ?></td>
-                                <td><?php echo $bending['extrashift'] ?></td>
-                                <td><?php echo number_format(getDailyPayment($bending['date']), 0, ',', ' '); ?> &#8381;</td>
+                                <td><?php echo number_format(getExtraShiftCount($bending['date']), 0, ',', ' '); ?></td>
+                                <td><?php echo number_format(getDailyPayment($bending['date']), 0, ',', ' '); ?></td>
                             </tr>
                             <?php endforeach; ?>
                             <tr><td colspan="5"></td></tr>
@@ -75,10 +72,10 @@
                         <tfoot>
                             <tr class="detailTableFooter">
                                 <td>Итого</td>
-                                <td>4 156</td>
-                                <td>1 987</td>
-                                <td>-</td>
-                                <td><?php echo number_format(getMonthlyPayment('08-2022'), 0, ',', ' '); ?> &#8381;</td>
+                                <td><?php echo number_format(getHoursCount(date('m-Y', strtotime($bending['date']))), 0, ',', ' '); ?></td>
+                                <td><?php echo number_format(getProductCount(date('m-Y', strtotime($bending['date'])))); ?></td>
+                                <td><?php echo number_format(getExtraShiftCount(date('m-Y', strtotime($bending['date']))), 0, ',', ' '); ?></td>
+                                <td><?php echo number_format(getMonthlyPayment(date('m-Y', strtotime($bending['date']))), 0, ',', ' '); ?></td>
                             </tr>
                         </tfoot>
                     </table>
