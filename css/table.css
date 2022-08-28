@@ -17,7 +17,7 @@ td {
 
 .DayStatTable td {
     cursor: default;
-    min-width: 36px;
+    /* min-width: 36px; */
     text-align: center;
 }
 .DayStatTable td input {
@@ -141,4 +141,18 @@ td {
 .DefPercent{
     display: inline-block;
     font-size: 16px;
+}
+
+.colStile{
+    width: 68px;
+}
+
+.buttonBlock{
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0px;
+}
+
+.buttonBlock input{
+    min-width: 150px;
 }

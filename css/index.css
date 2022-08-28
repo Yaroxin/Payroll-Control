@@ -625,7 +625,9 @@
 }
 
 #hourlyPayCheck,
-#extraShiftCheck{
+#extraShiftCheck,
+#addHourlyPayCheck,
+#addExtraShiftCheck{
     height: 20px;
     width: 20px;
 }

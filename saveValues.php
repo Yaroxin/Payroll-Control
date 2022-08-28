@@ -8,24 +8,26 @@ if (!empty($_POST["workDayId"]) && !empty($_POST["workDayTable"])) {
     if (!$workday){
        $result = 'noData';
     } else {
-        if($_POST["workDayTable"] == 'hourly'){
-            if(($_POST["Hours"] != 0) && ($_POST["PayPerHour"] != 0)){
-                $workday['hours'] = $_POST["Hours"];
-                $workday['payperhour'] = $_POST["PayPerHour"];
-                $workday['bonus'] = $_POST["bonus"];
-                $workday['fine'] = $_POST["fine"];
-                R::store($workday);
-                $result = ('Запись сохранена.');
-            }else{
-                R::trash($workday);
-                $result = ('Запись удалена.');
-            }            
-        }
+        // if($_POST["workDayTable"] == 'hourly'){
+        //     if(($_POST["Hours"] != 0) && ($_POST["PayPerHour"] != 0)){
+        //         $workday['hours'] = $_POST["Hours"];
+        //         $workday['payperhour'] = $_POST["PayPerHour"];
+        //         $workday['bonus'] = $_POST["bonus"];
+        //         $workday['fine'] = $_POST["fine"];
+        //         R::store($workday);
+        //         $result = ($_POST["Date"] . ':' . 'save');
+        //     }else{
+        //         R::trash($workday);
+        //         $result = ($_POST["Date"] . ':' . 'delete');
+        //     }            
+        // }
+
+        // $val =  $_POST["item1count"] + $_POST["item2count"] + $_POST["item3count"] + $_POST["item4count"] + $_POST["item5count"];
+        // $result = $_POST["Hours"] . ' - ' . $val;
 
         if($_POST["workDayTable"] == 'bending'){
-            $val =  $_POST["item1count"] + $_POST["item2count"] + $_POST["item3count"] + $_POST["item4count"] + $_POST["item5count"];
-
-            if($_POST["Hours"] != 0 && $val != 0){
+            
+            if($_POST["Hours"] != 0){
 
                 if($_POST["extraShiftCheck"] == 'on'){
                     $workday['extrashift'] = $_POST["extraShiftValue"];
@@ -39,7 +41,9 @@ if (!empty($_POST["workDayId"]) && !empty($_POST["workDayTable"])) {
                     $workday['hourlypay'] = 0;
                 }
 
-                $workday['date'] = $_POST["changeDate"];
+                $workday['title'] = 'Гиб(Рамы)';
+                $workday['date'] = $_POST["Date"];
+                $workday['type'] = $_POST["WorkTime"];
                 $workday['hours'] = $_POST["Hours"];
                 $workday['item1count'] = $_POST["item1count"];
                 $workday['item2count'] = $_POST["item2count"];
@@ -60,10 +64,10 @@ if (!empty($_POST["workDayId"]) && !empty($_POST["workDayTable"])) {
                 $workday['fine'] = $_POST["fine"];
                 $workday['note'] = $_POST["addNote"];
                 R::store($workday);
-                $result = ('Запись сохранена.');  
+                $result = ($_POST["Date"] . ':' . 'save'); 
             }else{
                 R::trash($workday);
-                $result = ('Запись удалена.');
+                $result = ($_POST["Date"] . ':' . 'delete');
             }     
         }
         

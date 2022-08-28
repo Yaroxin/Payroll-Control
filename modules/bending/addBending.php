@@ -18,7 +18,7 @@
             <th>Продукция</th>
             <th>Кол-во</th>
             <th>K.</th>
-            <th>Цена</th>            
+            <th class="costCol hide">Цена</th>            
         </tr>
         <tr>
             <td>Часы:</td>
@@ -28,9 +28,9 @@
     <?php foreach($items as $item): ?>
         <tr>
             <td><?php echo $item['title']; ?>:</td>
-            <td><input id="<?php echo $item['name']; ?>count" pattern="[0-9]{1,3}" class="WorkDayListItem forZero" type="text" name="<?php echo $item['name']; ?>count" value="0" inputmode="decimal" maxlength="3" required onchange="summCalc('bending'); activateAddButton('bending');"></td>
-            <td><input id="<?php echo $item['name']; ?>factor" pattern="\d+(\.\d{1,2})?" class="WorkDayListItem" type="text" name="<?php echo $item['name']; ?>factor" value="<?php echo $item['factor']; ?>" inputmode="decimal" maxlength="4" required></td>
-            <td><input id="<?php echo $item['name']; ?>cost" pattern="[0-9]{1,3}" class="WorkDayListItem" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" inputmode="decimal" maxlength="3" required></td>
+            <td class="colStile"><input id="<?php echo $item['name']; ?>count" pattern="[0-9]{1,3}" class="WorkDayListItem forZero" type="text" name="<?php echo $item['name']; ?>count" value="0" inputmode="decimal" maxlength="3" required onchange="summCalc('bending'); activateAddButton('bending');"></td>
+            <td class="colStile"><input id="<?php echo $item['name']; ?>factor" pattern="\d+(\.\d{1,2})?" class="WorkDayListItem" type="text" name="<?php echo $item['name']; ?>factor" value="<?php echo $item['factor']; ?>" inputmode="decimal" maxlength="4" required></td>
+            <td class="colStile costCol hide"><input id="<?php echo $item['name']; ?>cost" pattern="[0-9]{1,3}" class="WorkDayListItem costInput" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" inputmode="decimal" maxlength="3" required></td>
         </tr>
     <?php endforeach; ?>
 
@@ -48,14 +48,14 @@
         <tr>
             <td>Почасовая</td>
             <td>
-                <input type="checkbox" id="hourlyPayCheck" name="hourlyPayCheck" checked onchange="summCalc('bending');">
+                <input type="checkbox" id="addHourlyPayCheck" name="hourlyPayCheck" checked onchange="summCalc('bending'); hideCostCol(this);">
             </td>
             <td colspan="2"><input id="hourlyPayValue" inputmode="decimal" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="hourlyPayValue" value="<?php echo $settings[3]['value']; ?>" maxlength="4"></td>
         </tr>    
         <tr>
             <td>Доп. смена</td>
             <td>
-                <input type="checkbox" id="extraShiftCheck" name="extraShiftCheck" onchange="summCalc('bending');">
+                <input type="checkbox" id="addExtraShiftCheck" name="extraShiftCheck" onchange="summCalc('bending');">
             </td>
             <td colspan="2"><input id="extraShiftValue" inputmode="decimal" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $settings[4]['value']; ?>" maxlength="4"></td>
         </tr> 

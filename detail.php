@@ -73,7 +73,7 @@
                             <tr class="detailTableFooter">
                                 <td>Итого</td>
                                 <td><?php echo number_format(getHoursCount(date('m-Y', strtotime($bending['date']))), 0, ',', ' '); ?></td>
-                                <td><?php echo number_format(getProductCount(date('m-Y', strtotime($bending['date'])))); ?></td>
+                                <td><?php echo number_format(getProductCount(date('m-Y', strtotime($bending['date']))), 0, ',', ' '); ?></td>
                                 <td><?php echo number_format(getExtraShiftCount(date('m-Y', strtotime($bending['date']))), 0, ',', ' '); ?></td>
                                 <td><?php echo number_format(getMonthlyPayment(date('m-Y', strtotime($bending['date']))), 0, ',', ' '); ?></td>
                             </tr>

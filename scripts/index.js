@@ -71,7 +71,7 @@ function showMoreItemInfo(id) {
 function activateAddButton(type) {
     let Hours = document.getElementById(type + 'Hours');
     let addButton = document.getElementById('Add' + type + 'Day');
-    let hourlyPayCheck = (document.getElementById('hourlyPayCheck')).checked;
+    let hourlyPayCheck = (document.getElementById('addHourlyPayCheck')).checked;
     let hourlyPayValue = document.getElementById('hourlyPayValue');
 
     if(hourlyPayCheck == true){
@@ -101,8 +101,8 @@ function activateAddButton(type) {
 function summCalc(type) {
 
     if(type == 'bending'){
-        let hourlyPayCheck = (document.getElementById('hourlyPayCheck')).checked;
-        let extraShiftCheck = (document.getElementById('extraShiftCheck')).checked;
+        let hourlyPayCheck = (document.getElementById('addHourlyPayCheck')).checked;
+        let extraShiftCheck = (document.getElementById('addExtraShiftCheck')).checked;
         let paySummBending = document.getElementById('paySummBending');
         let extraShiftValue = Number(document.getElementById('extraShiftValue').value);
         let summ = 0;
@@ -147,7 +147,8 @@ function editValues(tableId) {
     let editBendingDay = document.getElementById('editBendingDay');    
     let inputs = table.getElementsByTagName('input');
     let saveBendingValues = document.getElementById('saveBendingValues'); 
-    let changeDateTr = document.getElementById('changeDateTr');
+    let SelectTime = document.getElementById('SelectTime');
+    let addNote = document.getElementById('addNote');
 
     if(editBendingDay.value == 'Изменить'){
 
@@ -155,8 +156,9 @@ function editValues(tableId) {
             input.disabled = false;
         }
         saveBendingValues.disabled = false;
+        addNote.disabled = false;
         saveBendingValues.classList.remove("notActiveBtn");
-        changeDateTr.classList.toggle('hide');
+        SelectTime.disabled = false;
         editBendingDay.value = 'Отмена';
 
     }else if (editBendingDay.value == 'Отмена') {
@@ -165,8 +167,9 @@ function editValues(tableId) {
             input.disabled = true;
         }
         saveBendingValues.disabled = true;
+        addNote.disabled = true;
         saveBendingValues.classList.add("notActiveBtn");
-        changeDateTr.classList.toggle('hide');
+        SelectTime.disabled = true;
         editBendingDay.disabled = false;
         editBendingDay.value = 'Изменить';
       }
@@ -182,9 +185,19 @@ function saveValues(formId, tableId) {
             data: $(formId).serialize(),
             success: function (response) {
                 result = jQuery.parseJSON(response);
-                alert(result);
-                document.location.reload();
-                // document.location = '/';            
+                temp = result.split(':');
+                date = temp[0].split('-');
+                flag = temp[1];
+
+                if(flag == 'save'){
+                    alert('Запись сохранена!');
+                    document.location = '/single.php?day=' + date[2] + '&month=' + date[1] + '&year=' + date[0];
+                }else{
+                    if(flag == 'delete'){
+                        alert('Запись удалена!');
+                        document.location = ('/');
+                    }                    
+                }                          
             },
             error: function (response) {
                 alert('Ошибка');
@@ -451,5 +464,10 @@ $( ".detailLink" ).click(function() {
     document.location = '/single.php?day=' + expDate[2] + '&month=' + expDate[1] + '&year=' + expDate[0];
 });
 
+function hideCostCol(checkbox){
+    let cols = document.querySelectorAll('.costCol');
 
-
+    for (let col of cols) {
+        col.classList.toggle('hide');        
+    }
+}
