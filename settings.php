@@ -54,11 +54,11 @@
                                         <input class="itemInput itemInputTitle" id="<?php echo $item['name']; ?>Title" type="text" value="<?php echo $item['title']; ?>" name="<?php echo $item['name']; ?>Title" placeholder="Название">
                                     </div>
                                     <div class="itemCost">
-                                        <label class="itemLabel" for="<?php echo $item['name']; ?>Cost">Цена:</label>
+                                        <label class="itemLabel" inputmode="decimal" for="<?php echo $item['name']; ?>Cost">Цена:</label>
                                         <input class="itemInput" id="<?php echo $item['name']; ?>Cost" type="text" value="<?php echo $item['cost']; ?>" name="<?php echo $item['name']; ?>Cost" placeholder="Цена">
                                     </div>                            
                                     <div class="itemFactor">
-                                        <label class="itemLabel" for="<?php echo $item['name']; ?>Factor">Коэфф.:</label>
+                                        <label class="itemLabel" inputmode="decimal" for="<?php echo $item['name']; ?>Factor">Коэфф.:</label>
                                         <input class="itemInput" id="<?php echo $item['name']; ?>Factor" type="text" value="<?php echo $item['factor']; ?>" name="<?php echo $item['name']; ?>Factor" placeholder="Коэфф.">
                                     </div>                            
                                 </div>
@@ -68,22 +68,22 @@
                         <div class="settingBlock">
                             <div class="settingBlockLeft">
                                 <label class="bonusSettingsLabel" for="rate">Норма ед.:</label>
-                                <input id="rate" class="settingsInput" type="text" value="<?php echo $settings[1]['value']; ?>" name="rate" placeholder="Норма">
+                                <input id="rate" class="settingsInput" inputmode="decimal" type="text" value="<?php echo $settings[1]['value']; ?>" name="rate" placeholder="Норма">
                             </div>
                             <div class="settingBlockRight">
                                 <label class="bonusSettingsLabel" for="hourlypay">Цена/час:</label>
-                                <input id="hourlypay" class="settingsInput" type="text" value="<?php echo $settings[3]['value']; ?>" name="hourlypay" placeholder="Цена/час">
+                                <input id="hourlypay" class="settingsInput" inputmode="decimal" type="text" value="<?php echo $settings[3]['value']; ?>" name="hourlypay" placeholder="Цена/час">
                             </div>                            
                         </div>
 
                         <div class="settingBlock">
                             <div class="settingBlockLeft">
                                 <label class="bonusSettingsLabel" for="extrashift">Доп. смена:</label>
-                                <input id="extrashift" class="settingsInput" type="text" value="<?php echo $settings[4]['value']; ?>" name="extrashift" placeholder="Доп. смена">
+                                <input id="extrashift" class="settingsInput" inputmode="decimal" type="text" value="<?php echo $settings[4]['value']; ?>" name="extrashift" placeholder="Доп. смена">
                             </div>
                             <div class="settingBlockRight">
                                 <label class="bonusSettingsLabel" for="bonus">Премия, %:</label>
-                                <input id="bonus" class="settingsInput" type="text" value="<?php echo $settings[2]['value']; ?>" name="bonus" placeholder="Премия %">
+                                <input id="bonus" class="settingsInput" inputmode="decimal" type="text" value="<?php echo $settings[2]['value']; ?>" name="bonus" placeholder="Премия %">
                             </div>                            
                         </div>                        
                         

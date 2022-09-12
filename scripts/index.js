@@ -142,24 +142,28 @@ function summCalc(type, rate) {
             let Bonus = Number((document.getElementById('Rub').value));  
             rate = Number(rate);
 
-            if( product < (rate * 1.2) ){
+            if(rate > 0){
+                if( product < (rate * 1.2) ){
+                    extraBonus = 0;
+                    addNote.value = '';              
+                }else if( (product >= (rate * 1.2)) && (product < (rate * 1.4)) ){
+                    extraBonus = 300;
+                    addNote.value = 'Доп. премия 300 руб. за +20% к норме';
+                }else if( (product >= (rate * 1.4)) && (product < (rate * 1.6)) ){
+                    extraBonus = 600;
+                    addNote.value = 'Доп. премия 600 руб. за +40% к норме';
+                }else if( (product >= (rate * 1.6)) && (product < (rate * 1.8)) ){
+                    extraBonus = 900;
+                    addNote.value = 'Доп. премия 900 руб. за +60% к норме';
+                }else if( (product >= (rate * 1.8)) && (product < (rate * 2)) ){
+                    extraBonus = 1200;
+                    addNote.value = 'Доп. премия 1200 руб. за +80% к норме';
+                }else if( (product >= (rate * 2)) ){
+                    extraBonus = 1500;
+                    addNote.value = 'Доп. премия 1500 руб. за +100% к норме';
+                }
+            }else{
                 extraBonus = 0;
-                addNote.value = '';              
-            }else if( (product >= (rate * 1.2)) && (product < (rate * 1.4)) ){
-                extraBonus = 300;
-                addNote.value = 'Доп. премия 300 руб. за +20% к норме';
-            }else if( (product >= (rate * 1.4)) && (product < (rate * 1.6)) ){
-                extraBonus = 600;
-                addNote.value = 'Доп. премия 600 руб. за +40% к норме';
-            }else if( (product >= (rate * 1.6)) && (product < (rate * 1.8)) ){
-                extraBonus = 900;
-                addNote.value = 'Доп. премия 900 руб. за +60% к норме';
-            }else if( (product >= (rate * 1.8)) && (product < (rate * 2)) ){
-                extraBonus = 1200;
-                addNote.value = 'Доп. премия 1200 руб. за +80% к норме';
-            }else if( (product >= (rate * 2)) ){
-                extraBonus = 1500;
-                addNote.value = 'Доп. премия 1500 руб. за +100% к норме';
             }
             
             extraBonusInput.value = extraBonus;
