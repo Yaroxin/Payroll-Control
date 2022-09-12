@@ -106,16 +106,20 @@ $totalRate = $totalHours * $RATE_PER_HOUR;
 
 if ($totalRate > 0){
     $upRate = (($totalRate * 1.1) + 0.5) - $product;
-    
-    if($upRate < 0){
-        $upRate = 0;
-    }
 
-    if( ($product / $totalRate) > 1 ){
+    if( ($product / $totalRate) >= 1 ){
         $bonus = intval((($product / $totalRate) - 1) * 100);
     }else{
         $bonus = 0;
     }
+    
+    if($upRate <= 0){
+        $upRate = 0;
+    }else{
+        $bonus = 0;
+    }
+
+    
 }else{
     $upRate = 0;
     $bonus = 0;
