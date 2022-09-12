@@ -5,9 +5,8 @@
 <?php 
     require "userDB.php";
     require "config.php";
-    include_once "getStat.php";
+    include_once "getStat.php";    
     
-    $settings = R::findAll('settings');
     if(!$settings){
         $newSettings = [];
         foreach($defaultSettings as $name => $value){

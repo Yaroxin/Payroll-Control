@@ -105,9 +105,14 @@ if ($product > 0){
 $totalRate = $totalHours * $RATE_PER_HOUR;
 
 if ($totalRate > 0){
-    $upRate = (($totalRate *1.1) + 0.5) - $product;
-    if(($product / $totalRate) > 1){
-        $bonus = 10;
+    $upRate = (($totalRate * 1.1) + 0.5) - $product;
+    
+    if($upRate < 0){
+        $upRate = 0;
+    }
+
+    if( ($product / $totalRate) > 1 ){
+        $bonus = intval((($product / $totalRate) - 1) * 100);
     }else{
         $bonus = 0;
     }
@@ -115,6 +120,7 @@ if ($totalRate > 0){
     $upRate = 0;
     $bonus = 0;
 }
+
 $amountPay = $payment['prepaid'] + $payment['salary'] + $payment['bonus'];
 $diffPay = $amountPay - $totalPay;
 
