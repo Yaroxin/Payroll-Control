@@ -54,12 +54,12 @@
                                         <input class="itemInput itemInputTitle" id="<?php echo $item['name']; ?>Title" type="text" value="<?php echo $item['title']; ?>" name="<?php echo $item['name']; ?>Title" placeholder="Название">
                                     </div>
                                     <div class="itemCost">
-                                        <label class="itemLabel" inputmode="decimal" for="<?php echo $item['name']; ?>Cost">Цена:</label>
-                                        <input class="itemInput" id="<?php echo $item['name']; ?>Cost" type="text" value="<?php echo $item['cost']; ?>" name="<?php echo $item['name']; ?>Cost" placeholder="Цена">
+                                        <label class="itemLabel" for="<?php echo $item['name']; ?>Cost">Цена:</label>
+                                        <input class="itemInput" inputmode="decimal" id="<?php echo $item['name']; ?>Cost" type="text" value="<?php echo $item['cost']; ?>" name="<?php echo $item['name']; ?>Cost" placeholder="Цена">
                                     </div>                            
                                     <div class="itemFactor">
-                                        <label class="itemLabel" inputmode="decimal" for="<?php echo $item['name']; ?>Factor">Коэфф.:</label>
-                                        <input class="itemInput" id="<?php echo $item['name']; ?>Factor" type="text" value="<?php echo $item['factor']; ?>" name="<?php echo $item['name']; ?>Factor" placeholder="Коэфф.">
+                                        <label class="itemLabel" for="<?php echo $item['name']; ?>Factor">Коэфф.:</label>
+                                        <input class="itemInput" inputmode="decimal" id="<?php echo $item['name']; ?>Factor" type="text" value="<?php echo $item['factor']; ?>" name="<?php echo $item['name']; ?>Factor" placeholder="Коэфф.">
                                     </div>                            
                                 </div>
                             <?php endforeach; ?>
