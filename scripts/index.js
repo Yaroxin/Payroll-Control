@@ -98,7 +98,7 @@ function activateAddButton(type) {
     }
 }
 
-function summCalc(type) {
+function summCalc(type, rate) {
 
     if(type == 'bending'){
         let hourlyPayCheck = (document.getElementById('addHourlyPayCheck')).checked;
@@ -140,7 +140,7 @@ function summCalc(type) {
             let hourlyPayValue = (document.getElementById('hourlyPayValue')).value;
             let Fine = Number((document.getElementById('fine')).value);
             let Bonus = Number((document.getElementById('Rub').value));  
-            let rate = 65;
+            rate = Number(rate);
 
             if( product < (rate * 1.2) ){
                 extraBonus = 0;
