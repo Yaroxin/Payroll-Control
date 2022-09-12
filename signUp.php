@@ -49,7 +49,7 @@
                 R::exec("DROP DATABASE IF EXISTS " .$userDbName);
                 R::exec("CREATE DATABASE IF NOT EXISTS " .$userDbName);                
             
-                R::addDatabase($userDbName, sprintf('mysql:host=127.0.0.1;dbname='.$userDbName), 'root', 'root');
+                R::addDatabase($userDbName, sprintf('mysql:host=127.0.0.1;dbname='.$userDbName), 'yaroxin', 'Ya35792817');
                 R::selectDatabase($userDbName);
                 if ( !R::testConnection() ) {
                     $errors[] = 'Нет соединения с базой данных';
@@ -64,6 +64,20 @@
                     }
 
                     R::storeAll($newSettings);
+
+                    $newItems = [];
+                    foreach($defaultItems as $name => $title){
+                        $item = R::dispense('item');
+                        $item['name'] = $name;
+                        $item['title'] = $title;
+                        $item['cost'] = 0;
+                        $item['factor'] = 0.00;
+                        $item['active'] = 0;
+                        $newItems [] = $item;
+                    }
+                    
+                    R::storeAll($newItems);
+
                     $message[] = 'Пользователь добавлен';                    
                 }
                 

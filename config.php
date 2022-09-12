@@ -27,10 +27,18 @@ $dateOfGet = date( "Y-m-d", strtotime($_GET['year'].'-'.$_GET['month'].'-'.$_GET
 $defaultSettings = [
     'rate'      => '0',
     'bonus'     => '0',
-    'hourlyPay'     => '0',
-    'extraShift'     => '0',
+    'hourlypay'     => '0',
+    'extrashift'     => '0',
     'bonusBlock'     => '0',
     'productBlock'     => '0',
+];
+
+$defaultItems = [
+    'item1' => 'Изделие1',
+    'item2' => 'Изделие2',
+    'item3' => 'Изделие3',
+    'item4' => 'Изделие4',
+    'item5' => 'Изделие5',
 ];
 
 $ruMonthsName = [

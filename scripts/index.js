@@ -64,7 +64,7 @@ function addWorkDay(formId) {
 
 
 function showMoreItemInfo(id) {
-    let moreItemInfoId = document.getElementById('moreItemInfo' + id);
+    let moreItemInfoId = document.getElementById('moreItemInfo' + id);    
     moreItemInfoId.classList.toggle('hide');
 }
 
@@ -104,28 +104,68 @@ function summCalc(type) {
         let hourlyPayCheck = (document.getElementById('addHourlyPayCheck')).checked;
         let extraShiftCheck = (document.getElementById('addExtraShiftCheck')).checked;
         let paySummBending = document.getElementById('paySummBending');
+        let addNote = document.getElementById('addNote');
         let extraShiftValue = Number(document.getElementById('extraShiftValue').value);
+
+        let item1count = Number((document.getElementById('item1count')).value);
+        let item2count = Number((document.getElementById('item2count')).value);
+        let item3count = Number((document.getElementById('item3count')).value);
+        let item4count = Number((document.getElementById('item4count')).value);
+        let item5count = Number((document.getElementById('item5count')).value);
+        let item1cost = Number((document.getElementById('item1cost')).value);
+        let item2cost = Number((document.getElementById('item2cost')).value);
+        let item3cost = Number((document.getElementById('item3cost')).value);
+        let item4cost = Number((document.getElementById('item4cost')).value);
+        let item5cost = Number((document.getElementById('item5cost')).value);
+        let item1factor = Number((document.getElementById('item1factor')).value);
+        let item2factor = Number((document.getElementById('item2factor')).value);
+        let item3factor = Number((document.getElementById('item3factor')).value);
+        let item4factor = Number((document.getElementById('item4factor')).value);
+        let item5factor = Number((document.getElementById('item5factor')).value);
+
+        let product = (
+            (item1count * item1factor) + 
+            (item2count * item2factor) + 
+            (item3count * item3factor) + 
+            (item4count * item4factor) + 
+            (item5count * item5factor)
+        );
+
         let summ = 0;
         
         if(hourlyPayCheck == true){
 
             let hours = (document.getElementById('bendingHours')).value;
+            let extraBonusInput = document.getElementById('extraBonus');
             let hourlyPayValue = (document.getElementById('hourlyPayValue')).value;
             let Fine = Number((document.getElementById('fine')).value);
-            let Bonus = Number((document.getElementById('Rub').value));
-            summ = ((hours * hourlyPayValue) + Bonus) - Fine;
+            let Bonus = Number((document.getElementById('Rub').value));  
+            let rate = 65;
 
-        }else{            
-            let item1count = Number((document.getElementById('item1count')).value);
-            let item2count = Number((document.getElementById('item2count')).value);
-            let item3count = Number((document.getElementById('item3count')).value);
-            let item4count = Number((document.getElementById('item4count')).value);
-            let item5count = Number((document.getElementById('item5count')).value);
-            let item1cost = Number((document.getElementById('item1cost')).value);
-            let item2cost = Number((document.getElementById('item2cost')).value);
-            let item3cost = Number((document.getElementById('item3cost')).value);
-            let item4cost = Number((document.getElementById('item4cost')).value);
-            let item5cost = Number((document.getElementById('item5cost')).value);
+            if( product < (rate * 1.2) ){
+                extraBonus = 0;
+                addNote.value = '';              
+            }else if( (product >= (rate * 1.2)) && (product < (rate * 1.4)) ){
+                extraBonus = 300;
+                addNote.value = 'Доп. премия 300 руб. за +20% к норме';
+            }else if( (product >= (rate * 1.4)) && (product < (rate * 1.6)) ){
+                extraBonus = 600;
+                addNote.value = 'Доп. премия 600 руб. за +40% к норме';
+            }else if( (product >= (rate * 1.6)) && (product < (rate * 1.8)) ){
+                extraBonus = 900;
+                addNote.value = 'Доп. премия 900 руб. за +60% к норме';
+            }else if( (product >= (rate * 1.8)) && (product < (rate * 2)) ){
+                extraBonus = 1200;
+                addNote.value = 'Доп. премия 1200 руб. за +80% к норме';
+            }else if( (product >= (rate * 2)) ){
+                extraBonus = 1500;
+                addNote.value = 'Доп. премия 1500 руб. за +100% к норме';
+            }
+            
+            extraBonusInput.value = extraBonus;
+            summ = ((hours * hourlyPayValue) + Bonus + extraBonus) - Fine;
+
+        }else{
 
             let fine = Number((document.getElementById('fine')).value);
             let Rub = Number((document.getElementById('Rub').value));
@@ -140,7 +180,6 @@ function summCalc(type) {
         paySummBending.value = "Итого: " + summ.toFixed(0) + " ₽";
     }
 }
-
 
 function editValues(tableId) {
     let table = document.getElementById(tableId);    

@@ -42,7 +42,7 @@ if (isset($_POST["WorkType"]) && isset($_POST["Date"]) ) {
             $workShift['item3factor'] = $_POST["item3factor"];
             $workShift['item4factor'] = $_POST["item4factor"];
             $workShift['item5factor'] = $_POST["item5factor"];
-            $workShift['bonus'] = $_POST["bonus"];
+            $workShift['bonus'] = $_POST["bonus"] + $_POST["extraBonus"];
             $workShift['fine'] = $_POST["fine"];
             $workShift['note'] =  $_POST["addNote"];
             R::store($workShift);
