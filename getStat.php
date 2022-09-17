@@ -145,7 +145,7 @@ $totalPay = number_format($totalPay, 0, ',', ' ');
 
 $totalRate = number_format($totalRate, 1, ',', ' ');
 $upRate = number_format($upRate, 1, ',', ' ');
-$product = number_format($product, 0, ',', ' ');
+$product = number_format($product, 1, ',', ' ');
 
 $TotalItemsPerHour = number_format($TotalItemsPerHour, 2, ',', ' ');
 $TotalMoneyPerItem = number_format($TotalMoneyPerItem, 2, ',', ' ');

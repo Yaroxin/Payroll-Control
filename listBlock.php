@@ -44,6 +44,9 @@
         </div>
         <div class="itemPay">
             <?php echo $product;?>
+            <?php if($extraRate > 0): ?>
+            <div class="homeExtraRate">+<?php echo $extraRate;?>%</div>
+            <?php endif; ?>
             <div class="itemDesc">Едениц</div>            
         </div>
         <div class="itemPerHour">

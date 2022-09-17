@@ -56,6 +56,22 @@
 
         $workTT = array_combine($workTitles, $workTypes);
 
+        $extraRatePercent = (($product / $RATE) * 100) - 100;
+
+        if($extraRatePercent < 20){
+            $extraRate = 0;
+        }elseif( $extraRatePercent >= 20 && $extraRatePercent < 40 ){
+            $extraRate = 20;
+        }elseif($extraRatePercent >= 40 && $extraRatePercent < 60){
+            $extraRate = 40;
+        }elseif($extraRatePercent >= 60 && $extraRatePercent < 80){
+            $extraRate = 60;
+        }elseif($extraRatePercent >= 80 && $extraRatePercent < 100){
+            $extraRate = 80;
+        }elseif($extraRatePercent >= 100 ){
+            $extraRate = 100;
+        }
+
         $dayHours = $dayBendingHours;
         $dayPaySumm = number_format($dayBendingSumm, 0, ',', ' ');
         $dayPayPerHour = number_format($dayBendingSumm / $dayHours, 0, ',', ' ');
