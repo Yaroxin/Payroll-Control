@@ -286,7 +286,8 @@
 .amountPay,
 .amountHours,
 .amountPerHour,
-.homeAmountPay{
+.homeAmountPay,
+.amountProduct{
     color: #578798;
     text-align: center;
     font-size: 54px;
@@ -313,7 +314,8 @@
 }
 
 .amountHours,
-.amountPerHour{
+.amountPerHour,
+.amountProduct{
     font-size: 36px;
     font-weight: 100;
 }
@@ -533,12 +535,6 @@
 #bonusSettingsContent{
     margin-bottom: 20px;
 }
-
-/* .bonusSettingsLabel{
-    padding: 0px;
-    margin: 15px 0px 0px 15px;
-    display: block;
-} */
 
 .extraBlocks{
     border: 1px solid #578798;

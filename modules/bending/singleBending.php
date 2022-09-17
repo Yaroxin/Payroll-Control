@@ -26,30 +26,30 @@
         </tr>
         <tr>
             <td>Часы:</td>
-            <td colspan="3"><input id="bendingHours" inputmode="decimal" class="WorkDayListItem HoursInput forZero" type="text" name="Hours" value="<?php echo $totalHours; ?>" maxlength="2" disabled></td>
+            <td colspan="3"><input id="bendingHours" inputmode="decimal" class="WorkDayListItem HoursInput forZero" type="text" name="Hours" value="<?php echo $totalHours; ?>" maxlength="2" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
         </tr>
 
     <?php foreach($itemRows as $item): ?>
         <tr>
             <td><?php echo $item['title']; ?>:</td>
-            <td class="colStile"><input id="<?php echo $item['name']; ?>count" pattern="[0-9]{1,3}" class="WorkDayListItem forZero" type="text" name="<?php echo $item['name']; ?>count" value="<?php echo $item['count']; ?>" inputmode="decimal" maxlength="3" disabled></td>
-            <td class="colStile"><input id="<?php echo $item['name']; ?>factor" pattern="\d+(\.\d{1,2})?" class="WorkDayListItem" type="text" name="<?php echo $item['name']; ?>factor" value="<?php echo $item['factor']; ?>" inputmode="decimal" maxlength="4" disabled></td>
+            <td class="colStile"><input id="<?php echo $item['name']; ?>count" pattern="[0-9]{1,3}" class="WorkDayListItem forZero" type="text" name="<?php echo $item['name']; ?>count" value="<?php echo $item['count']; ?>" inputmode="decimal" maxlength="3" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
+            <td class="colStile"><input id="<?php echo $item['name']; ?>factor" pattern="\d+(\.\d{1,2})?" class="WorkDayListItem" type="text" name="<?php echo $item['name']; ?>factor" value="<?php echo $item['factor']; ?>" inputmode="decimal" maxlength="4" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
             
             <?php if($bending['hourlypay'] == 0): ?>
-            <td class="colStile costCol"><input id="<?php echo $item['name']; ?>cost" pattern="[0-9]{1,3}" class="WorkDayListItem costInput" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" inputmode="decimal" maxlength="3" disabled></td>
+            <td class="colStile costCol"><input id="<?php echo $item['name']; ?>cost" pattern="[0-9]{1,3}" class="WorkDayListItem costInput" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" inputmode="decimal" maxlength="3" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
             <?php else: ?>
-            <td class="colStile costCol hide"><input id="<?php echo $item['name']; ?>cost" pattern="[0-9]{1,3}" class="WorkDayListItem costInput" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" inputmode="decimal" maxlength="3" disabled></td>
+            <td class="colStile costCol hide"><input id="<?php echo $item['name']; ?>cost" pattern="[0-9]{1,3}" class="WorkDayListItem costInput" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" inputmode="decimal" maxlength="3" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
             <?php endif; ?>
         </tr>
     <?php endforeach; ?>
 
         <tr>
             <td>Штраф/Вычет:</td>
-            <td colspan="3"><input id="fine" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="fine" value="<?php echo $bending['fine']; ?>" inputmode="decimal" maxlength="4" disabled></td>
+            <td colspan="3"><input id="fine" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="fine" value="<?php echo $bending['fine']; ?>" inputmode="decimal" maxlength="4" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
         </tr>
         <tr>
             <td>Премия:</td>
-            <td colspan="3"><input id="Rub" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="bonus" value="<?php echo $bending['bonus']; ?>" inputmode="decimal" maxlength="4" disabled></td>
+            <td colspan="3"><input id="Rub" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="bonus" value="<?php echo $bending['bonus']; ?>" inputmode="decimal" maxlength="4" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
         </tr>    
         <tr>
             <td colspan="4"></td>
@@ -58,24 +58,23 @@
             <td>Почасовая</td>
             <td>
                 <?php if ($bending['hourlypay'] == 0): ?>
-                    <input type="checkbox" id="hourlyPayCheck" name="hourlyPayCheck" disabled onchange="clearInput('hourlyPay'); hideCostCol(this);">                    
+                    <input type="checkbox" id="hourlyPayCheck" name="hourlyPayCheck" disabled onchange="clearInput('hourlyPay'); hideCostCol(this); reCalculate(this, <?php echo $settings[1]['value'];?>);">                    
                 <?php else:?>
-                    <input type="checkbox" id="hourlyPayCheck" name="hourlyPayCheck" checked disabled onchange="clearInput('hourlyPay'); hideCostCol(this);">
+                    <input type="checkbox" id="hourlyPayCheck" name="hourlyPayCheck" checked disabled onchange="clearInput('hourlyPay'); hideCostCol(this); reCalculate(this, <?php echo $settings[1]['value'];?>);">
                 <?php endif;?>
             </td>
-            <td colspan="2"><input id="hourlyPayValue" inputmode="decimal" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="hourlyPayValue" value="<?php echo $settings[3]['value']; ?>" maxlength="4" disabled></td>
+            <td colspan="2"><input id="hourlyPayValue" inputmode="decimal" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="hourlyPayValue" value="<?php echo $settings[3]['value']; ?>" maxlength="4" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
             <input type="hidden" id="hourlyPaySet" name="hourlyPaySet" value="<?php echo $settings[3]['value']; ?>">
         </tr>    
         <tr>
-            <td>Доп. смена</td>
-            <td>
+            <td>Доп. смена</td>            
                 <?php if ($bending['extrashift'] == 0): ?>
-                    <input type="checkbox" id="extraShiftCheck" name="extraShiftCheck" disabled onchange="clearInput('extraShift');">
+                    <td><input type="checkbox" id="extraShiftCheck" name="extraShiftCheck" disabled onchange="clearInput('extraShift'); reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
+                    <td colspan="2"><input id="extraShiftValue" inputmode="decimal" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="0" maxlength="4" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
                 <?php else:?>
-                    <input type="checkbox" id="extraShiftCheck" name="extraShiftCheck" checked disabled onchange="clearInput('extraShift');">
-                <?php endif;?>
-            </td>
-            <td colspan="2"><input id="extraShiftValue" inputmode="decimal" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $settings[4]['value']; ?>" maxlength="4" disabled></td>
+                    <td><input type="checkbox" id="extraShiftCheck" name="extraShiftCheck" checked disabled onchange="clearInput('extraShift'); reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
+                    <td colspan="2"><input id="extraShiftValue" inputmode="decimal" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $settings[4]['value']; ?>" maxlength="4" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
+                <?php endif;?>            
             <input type="hidden" id="extraShiftSet" name="extraShiftSet" value="<?php echo $settings[4]['value']; ?>">
         </tr> 
         <tr>

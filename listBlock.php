@@ -43,8 +43,8 @@
             <div class="itemDesc">Часов</div>
         </div>
         <div class="itemPay">
-        <?php echo $product;?>
-            <div class="itemDesc">Едениц</div>
+            <?php echo $product;?>
+            <div class="itemDesc">Едениц</div>            
         </div>
         <div class="itemPerHour">
             <?php echo $dayPayPerHour ;?>

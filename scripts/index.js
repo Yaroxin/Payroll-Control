@@ -426,73 +426,147 @@ function clearInput(valueName) {
     }
 }
 
+function getProductCount(){
+    let item1count = Number(document.getElementById('item1count').value);
+    let item2count = Number(document.getElementById('item2count').value);
+    let item3count = Number(document.getElementById('item3count').value);
+    let item4count = Number(document.getElementById('item4count').value);
+    let item5count = Number(document.getElementById('item5count').value);
+
+    let item1factor = Number(document.getElementById('item1factor').value);
+    let item2factor = Number(document.getElementById('item2factor').value);
+    let item3factor = Number(document.getElementById('item3factor').value);
+    let item4factor = Number(document.getElementById('item4factor').value);
+    let item5factor = Number(document.getElementById('item5factor').value);
+
+    return ((item1count * item1factor) + (item2count * item2factor) + (item3count * item3factor) + (item4count * item4factor) + (item5count * item5factor));
+}
+
+function getPiecework(){
+    let item1count = Number(document.getElementById('item1count').value);
+    let item2count = Number(document.getElementById('item2count').value);
+    let item3count = Number(document.getElementById('item3count').value);
+    let item4count = Number(document.getElementById('item4count').value);
+    let item5count = Number(document.getElementById('item5count').value);
+
+    let item1cost = Number(document.getElementById('item1cost').value);
+    let item2cost = Number(document.getElementById('item2cost').value);
+    let item3cost = Number(document.getElementById('item3cost').value);
+    let item4cost = Number(document.getElementById('item4cost').value);
+    let item5cost = Number(document.getElementById('item5cost').value);
+
+    return ((item1count * item1cost) + (item2count * item2cost) + (item3count * item3cost) + (item4count * item4cost) + (item5count * item5cost));
+}
+
+function getNote(product, rate){
+    if( product < (rate * 1.2) ){
+        return '';              
+    }else if( (product >= (rate * 1.2)) && (product < (rate * 1.4)) ){
+        return '+300 ₽ (+20%)';
+    }else if( (product >= (rate * 1.4)) && (product < (rate * 1.6)) ){
+        return '+600 ₽ (+40%)';
+    }else if( (product >= (rate * 1.6)) && (product < (rate * 1.8)) ){
+        return '+900 ₽ (+60%)';
+    }else if( (product >= (rate * 1.8)) && (product < (rate * 2)) ){
+        return '+1200 ₽ (+80%)';
+    }else if( (product >= (rate * 2)) ){
+        return '+1500 ₽ (+100%)';
+    }
+}
+
+function reCalculate(obj, rate) {
+    let hourlyPayCheck = document.getElementById('hourlyPayCheck').checked;
+
+    let bendingHours = Number(document.getElementById('bendingHours').value);
+    let fine = Number(document.getElementById('fine').value);
+    let bonus = Number(document.getElementById('Rub').value);
+    let hourlyPayValue = Number(document.getElementById('hourlyPayValue').value);
+    let extraShiftValue = Number(document.getElementById('extraShiftValue').value);
+
+    let textarea = document.getElementById("addNote");
+
+    let summ = 0;
+    let hours = 0;
+    let product = 0;
+    let payPerHours = 0;
+    let extraBonus = 0;
+
+    hours = bendingHours;
+    product = getProductCount();
+    payPerHours = Math.round((summ / hours), -1);    
+
+
+    let note = textarea.value;
+    let index = (note.indexOf('%)' + '\n')) + 3;
+
+    if( product < (rate * 1.2) ){
+        extraBonus = 0;
+        if((note.indexOf('00 ₽ ')) < 0){
+            newNote = note; 
+        }else{
+            newNote = note.slice(index); 
+        }
+                   
+    }else if( (product >= (rate * 1.2)) && (product < (rate * 1.4)) ){
+        extraBonus = 300;
+        if((note.indexOf('00 ₽ ')) < 0){
+            newNote = '+300 ₽ (+20%)' + '\n' + note;
+        }else{
+            newNote = '+300 ₽ (+20%)' + '\n' + note.slice(index); 
+        }  
+
+    }else if( (product >= (rate * 1.4)) && (product < (rate * 1.6)) ){
+        extraBonus = 600;
+        if((note.indexOf('00 ₽ ')) < 0){
+            newNote = '+600 ₽ (+40%)' + '\n' + note;
+        }else{
+            newNote = '+600 ₽ (+40%)' + '\n' + note.slice(index); 
+        }
+
+    }else if( (product >= (rate * 1.6)) && (product < (rate * 1.8)) ){
+        extraBonus = 900;
+        if((note.indexOf('00 ₽ ')) < 0){
+            newNote = '+900 ₽ (+60%)' + '\n' + note;
+        }else{
+            newNote = '+900 ₽ (+60%)' + '\n' + note.slice(index); 
+        }
+
+    }else if( (product >= (rate * 1.8)) && (product < (rate * 2)) ){
+        extraBonus = 1200;
+        if((note.indexOf('00 ₽ ')) < 0){
+            newNote = '+1200 ₽ (+80%)' + '\n' + note;
+        }else{
+            newNote = '+1200 ₽ (+80%)' + '\n' + note.slice(index); 
+        }
+
+    }else if( (product >= (rate * 2)) ){
+        extraBonus = 1500;
+        if((note.indexOf('00 ₽ ')) < 0){
+            newNote = '+1500 ₽ (+100%)' + '\n' + note;
+        }else{
+            newNote = '+1500 ₽ (+100%)' + '\n' + note.slice(index); 
+        }
+    }
+
+    textarea.value = newNote; 
+    
+    if(hourlyPayCheck){
+        summ = ((bendingHours * hourlyPayValue) + bonus + extraBonus + extraShiftValue) - fine;
+    }else{
+        summ = ((getPiecework()) + bonus + extraBonus + extraShiftValue) - fine;
+    }    
+
+    document.getElementById('amountPay').innerHTML = numberWithSpaces(summ) + ' &#8381;';
+    document.getElementById('amountHours').innerHTML = hours + '<div class="infoBlockDesc">часов</div>';
+    document.getElementById('amountProduct').innerHTML = product + '<div class="infoBlockDesc">едениц</div>';
+    document.getElementById('amountPerHour').innerHTML = payPerHours + '<div class="infoBlockDesc">&#8381;/час</div>';
+
+    
+}
+
 function numberWithSpaces(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
-
-$( "#extraShiftCheck" ).click(function() {
-    let amountPay = Number(document.getElementById('amountPay').dataset.value);
-    let extraShiftSet = Number(document.getElementById('extraShiftSet').value);
-    let hourlyPayCheck = document.getElementById('hourlyPayCheck').checked;
-    let hourlyPaySet = Number(document.getElementById('hourlyPaySet').value);
-    let hours = Number(document.getElementById('bendingHours').value);
-    let fine = Number(document.getElementById('fine').value);
-    let bonus = Number(document.getElementById('Rub').value);
-
-    let summ = 0;
-    for (let i = 1; i <= 5; i++) {
-        summ += Number(document.getElementById('item' + i + 'count').value) * Number(document.getElementById('item' + i + 'cost').value);
-    }
-    summ = (summ + bonus) - fine;
-
-    if(this.checked){
-        if(hourlyPayCheck){
-            amountPay = hourlyPaySet * hours;
-            document.getElementById('amountPay').innerText = numberWithSpaces((hourlyPaySet * hours) +  extraShiftSet) + ' ₽';
-        }else{
-            document.getElementById('amountPay').innerText = numberWithSpaces(summ +  extraShiftSet) + ' ₽';
-        }        
-    }else{
-        if(hourlyPayCheck){
-            document.getElementById('amountPay').innerText = numberWithSpaces(hourlyPaySet * hours) + ' ₽';
-        }else{
-            document.getElementById('amountPay').innerText = numberWithSpaces(summ) + ' ₽';
-        }
-    }
-    
-});
-
-$( "#hourlyPayCheck" ).click(function() {
-    // let amountPay = Number(document.getElementById('amountPay').dataset.value);
-    let hourlyPaySet = Number(document.getElementById('hourlyPaySet').value);
-    let hours = Number(document.getElementById('bendingHours').value);
-    let extraShiftCheck = document.getElementById('extraShiftCheck').checked;
-
-    let fine = Number(document.getElementById('fine').value);
-    let bonus = Number(document.getElementById('Rub').value);
-    let extraShiftValue = Number(document.getElementById('extraShiftValue').value);
-
-    let summ = 0;
-    for (let i = 1; i <= 5; i++) {
-        summ += Number(document.getElementById('item' + i + 'count').value) * Number(document.getElementById('item' + i + 'cost').value);
-    }
-    summ = (summ + bonus) - fine;
-
-    if(this.checked){
-        if(extraShiftCheck){
-            document.getElementById('amountPay').innerText = numberWithSpaces((hourlyPaySet *  hours) + extraShiftValue) + ' ₽';
-        }else{
-            document.getElementById('amountPay').innerText = numberWithSpaces(hourlyPaySet *  hours) + ' ₽';
-        }       
-    }else{
-        if(extraShiftCheck){
-            document.getElementById('amountPay').innerText = numberWithSpaces(summ + extraShiftValue) + ' ₽';
-        }else{
-            document.getElementById('amountPay').innerText = numberWithSpaces(summ) + ' ₽';
-        }        
-    }
-    
-});
 
 
 $( "#userSettings" ).click(function() {

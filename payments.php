@@ -70,9 +70,9 @@
                     </div>
                     <form id="addPayoutForm" action="" method="POST">
                         <div class="addPayoutInputs">
-                            <input id="prepaid" type="text" name="prepaid" placeholder="Аванс" >
-                            <input id="salary" type="text" name="salary" placeholder="Зарплата" >
-                            <input id="bonus" type="text" name="bonus" placeholder="Доп. премия" >
+                            <input id="prepaid" type="text" name="prepaid" inputmode="decimal" placeholder="Аванс" >
+                            <input id="salary" type="text" name="salary" inputmode="decimal" placeholder="Зарплата" >
+                            <input id="bonus" type="text" name="bonus" inputmode="decimal" placeholder="Доп. премия" >
                             <input type="hidden" name="date" value="<?php echo $selectDate['month']; ?> <?php echo $selectDate['year']; ?>">
                             <input type="hidden" id="type" name="type" value="">
                         </div>

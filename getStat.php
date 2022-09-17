@@ -143,8 +143,8 @@ $bendingPay = number_format($bendingPay, 0, ',', ' ');
 $totalHours = number_format($totalHours, 1, ',', ' ');
 $totalPay = number_format($totalPay, 0, ',', ' ');
 
-$totalRate = number_format($totalRate, 0, ',', ' ');
-$upRate = number_format($upRate, 0, ',', ' ');
+$totalRate = number_format($totalRate, 1, ',', ' ');
+$upRate = number_format($upRate, 1, ',', ' ');
 $product = number_format($product, 0, ',', ' ');
 
 $TotalItemsPerHour = number_format($TotalItemsPerHour, 2, ',', ' ');
