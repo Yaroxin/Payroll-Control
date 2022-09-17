@@ -18,17 +18,19 @@
         $product += $item['count'] * $item['factor'];
     }
 
-    if(((($product / $RATE) - 1) * 100) < 20){
+    $extraRatePercent = (($product / $RATE) * 100) - 100;
+
+    if($extraRatePercent < 20){
         $extraRate = 0;
-    }else if(((($product / $RATE) - 1) * 100) >= 20 && ((($product / $RATE) - 1) * 100) < 40){
+    }elseif( $extraRatePercent >= 20 && $extraRatePercent < 40 ){
         $extraRate = 20;
-    }else if(((($product / $RATE) - 1) * 100) >= 40 && ((($product / $RATE) - 1) * 100) < 60){
+    }elseif($extraRatePercent >= 40 && $extraRatePercent < 60){
         $extraRate = 40;
-    }else if(((($product / $RATE) - 1) * 100) >= 60 && ((($product / $RATE) - 1) * 100) < 80){
+    }elseif($extraRatePercent >= 60 && $extraRatePercent < 80){
         $extraRate = 60;
-    }else if(((($product / $RATE) - 1) * 100) >= 80 && ((($product / $RATE) - 1) * 100) < 100){
+    }elseif($extraRatePercent >= 80 && $extraRatePercent < 100){
         $extraRate = 80;
-    }else if(((($product / $RATE) - 1) * 100) >= 100 ){
+    }elseif($extraRatePercent >= 100 ){
         $extraRate = 100;
     }
 

@@ -1,3 +1,10 @@
+function roundPlus(x, n) { //x - число, n - количество знаков 
+    if(isNaN(x) || isNaN(n)) return false;
+    var m = Math.pow(10,n);
+    return Math.round(x*m)/m;
+  }
+  
+
 $( "#bonusBlock" ).click(function() { 
     let bonusBlockHidden = document.getElementById('bonusBlockHidden');
 
@@ -447,18 +454,20 @@ function reCalculate(obj, rate) {
 
     document.getElementById('amountPay').innerHTML = numberWithSpaces(summ) + ' &#8381;';
     document.getElementById('amountHours').innerHTML = hours + '<div class="infoBlockDesc">часов</div>';
+
+    extraRatePercent = ((product / rate) * 100) - 100;
     
-    if((((product / rate) - 1) * 100) < 20){
+    if(extraRatePercent < 20){
         extraRate = 0;
-    }else if((((product / rate) - 1) * 100) >= 20 && (((product / rate) - 1) * 100) < 40){
+    }else if(extraRatePercent >= 20 && extraRatePercent < 40){
         extraRate = 20;
-    }else if((((product / rate) - 1) * 100) >= 40 && (((product / rate) - 1) * 100) < 60){
+    }else if(extraRatePercent >= 40 && extraRatePercent < 60){
         extraRate = 40;
-    }else if((((product / rate) - 1) * 100) >= 60 && (((product / rate) - 1) * 100) < 80){
+    }else if(extraRatePercent >= 60 && extraRatePercent < 80){
         extraRate = 60;
-    }else if((((product / rate) - 1) * 100) >= 80 && (((product / rate) - 1) * 100) < 100){
+    }else if(extraRatePercent >= 80 && extraRatePercent < 100){
         extraRate = 80;
-    }else if((((product / rate) - 1) * 100) >= 100 ){
+    }else if(extraRatePercent >= 100 ){
         extraRate = 100;
     }
 
