@@ -669,6 +669,14 @@
     cursor: pointer;
 }
 
+.extraRate{
+    background-color: #578798;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 18px;
+    padding: 3px;
+}
+
 @media (min-width: 1200px) {
     .wrapper{
         margin: 0 auto;

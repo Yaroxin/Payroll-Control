@@ -18,6 +18,20 @@
         $product += $item['count'] * $item['factor'];
     }
 
+    if(((($product / $RATE) - 1) * 100) < 20){
+        $extraRate = 0;
+    }else if(((($product / $RATE) - 1) * 100) >= 20 && ((($product / $RATE) - 1) * 100) < 40){
+        $extraRate = 20;
+    }else if(((($product / $RATE) - 1) * 100) >= 40 && ((($product / $RATE) - 1) * 100) < 60){
+        $extraRate = 40;
+    }else if(((($product / $RATE) - 1) * 100) >= 60 && ((($product / $RATE) - 1) * 100) < 80){
+        $extraRate = 60;
+    }else if(((($product / $RATE) - 1) * 100) >= 80 && ((($product / $RATE) - 1) * 100) < 100){
+        $extraRate = 80;
+    }else if(((($product / $RATE) - 1) * 100) >= 100 ){
+        $extraRate = 100;
+    }
+
     if($bending){
 
         if($bending['hourlypay'] == 0){

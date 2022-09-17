@@ -75,6 +75,5 @@
             <td class="addButtonCell" colspan="3"><input id="AddbendingDay" class="AddButton notActiveBtn" type="submit" name="AddBendingDay" value="Добавить" onclick="addWorkDay('#addBendingForm');" disabled></td>
         </tr>
         <input type="hidden" name="WorkType" value="Bending">
-        <input type="hidden" name="extraBonus" value="0" id="extraBonus">
     </table>
 </form>

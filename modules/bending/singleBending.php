@@ -49,7 +49,7 @@
         </tr>
         <tr>
             <td>Премия:</td>
-            <td colspan="3"><input id="Rub" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="bonus" value="<?php echo $bending['bonus']; ?>" inputmode="decimal" maxlength="4" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
+            <td colspan="3"><input id="Rub" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="bonus" value="<?php echo ($bending['bonus'] + $bending['extrabonus']); ?>" inputmode="decimal" maxlength="4" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
         </tr>    
         <tr>
             <td colspan="4"></td>
