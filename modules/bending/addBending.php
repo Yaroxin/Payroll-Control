@@ -30,7 +30,7 @@
             <td><?php echo $item['title']; ?>:</td>
             <td class="colStile"><input id="<?php echo $item['name']; ?>count" pattern="[0-9]{1,3}" class="WorkDayListItem forZero" type="text" name="<?php echo $item['name']; ?>count" value="0" inputmode="decimal" maxlength="3" required onchange="summCalc('bending', '<?php echo $settings[1]['value']; ?>'); activateAddButton('bending');"></td>
             <td class="colStile"><input id="<?php echo $item['name']; ?>factor" pattern="\d+(\.\d{1,2})?" class="WorkDayListItem" type="text" name="<?php echo $item['name']; ?>factor" value="<?php echo $item['factor']; ?>" inputmode="decimal" maxlength="4" required></td>
-            <td class="colStile costCol hide"><input id="<?php echo $item['name']; ?>cost" pattern="[0-9]{1,3}" class="WorkDayListItem costInput" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" inputmode="decimal" maxlength="3" required></td>
+            <td class="colStile costCol hide"><input id="<?php echo $item['name']; ?>cost" class="WorkDayListItem costInput" type="text" name="<?php echo $item['name']; ?>cost" value="<?php echo $item['cost']; ?>" inputmode="decimal" maxlength="4"></td>
         </tr>
     <?php endforeach; ?>
 
