@@ -11,7 +11,7 @@ $RATE_PER_HOUR = $RATE / 11 ;
 $url_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 $page = $url_parts[0];
 
-if($_SERVER['SERVER_NAME'] != '3.144.142.223'){
+if($_SERVER['SERVER_NAME'] != '194.87.99.129'){
     $devClass = 'devClass';
 }
 
