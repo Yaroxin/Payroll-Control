@@ -48,8 +48,13 @@
                                 </select>
                             </div>                        
                         </div>                
-                        <div class="homeAmountPay">
+                        <div id="homeAmountPay" class="homeAmountPay">
                             <?php echo $totalPay; ?> &#8381;
+                            <div id="paymentDitails" class="paymentDitails hide">
+                                <div class="paymentDitailsItem"><?php echo number_format($payPerHours, 0, ',', ' ');?> &#8381;</div>
+                                <div class="paymentDitailsItem"><?php echo number_format($bendingBonus, 0, ',', ' ');?> &#8381;</div>
+                                <div class="paymentDitailsItem"><?php echo number_format(($payPerHours * ($bonus / 100)), 0, ',', ' ');?> &#8381;</div>
+                            </div>
                             <?php if($amountPay <> 0): ?>
                                 <?php if($diffPay > 0): ?>
                                     <p class="diffPayPlus"><?php echo $amountPay; ?> &#8381; (+ <?php echo number_format($diffPay, 0, ',', ' '); ?> &#8381;)</p>
