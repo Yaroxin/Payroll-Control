@@ -283,6 +283,16 @@
     margin-top: 20px;
 }
 
+.paymentDitails{
+    background-color: #578798;
+    color: #fff;
+    display: flex;
+    justify-content: space-around;
+    font-size: 22px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
 .amountPay,
 .amountHours,
 .amountPerHour,
@@ -449,6 +459,10 @@
 
 .extraShift{
     border-left: 3px solid #fff4b0;
+}
+
+.nightShift{
+    border-left: 3px solid #227eca;
 }
 
 .moreItems{

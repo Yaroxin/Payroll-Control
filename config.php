@@ -6,7 +6,7 @@ $APP_NAME = 'Payroll Control';
 $VERSION = "0.9.1 Beta";
 
 $RATE = $settings[1]['value'];
-$RATE_PER_HOUR = $RATE / 11 ;
+$RATE_PER_HOUR = round(($RATE / 11), 2);
 
 $url_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 $page = $url_parts[0];

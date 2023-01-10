@@ -17,6 +17,12 @@ $( "#bonusBlock" ).click(function() {
     }
 });
 
+$( "#homeAmountPay" ).click(function() { 
+    let paymentDitails = document.getElementById('paymentDitails');
+
+    paymentDitails.classList.toggle('hide');
+});
+
 $( "#productBlock" ).click(function() { 
     let productBlockHidden = document.getElementById('productBlockHidden');
 
