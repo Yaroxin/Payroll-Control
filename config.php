@@ -3,7 +3,7 @@ require_once "functions.php";
 $settings = R::findAll('settings');
 
 $APP_NAME = 'Payroll Control';
-$VERSION = "0.9.1 Beta";
+$VERSION = "0.9.3 Beta";
 
 $RATE = $settings[1]['value'];
 $RATE_PER_HOUR = round(($RATE / 11), 2);

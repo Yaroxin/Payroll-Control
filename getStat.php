@@ -1,7 +1,8 @@
 <?php
 
-$totalHours = 0;
-$totalPay = 0;
+$totalHours = 0; // Общее кол-во отработынных часов.
+$totalPay = 0; // Общая сумма. Включает все доп. и премии.
+
 $totalPPH = 0;
 $totalRate = 0;
 $totalItems = 0;
@@ -90,17 +91,24 @@ if($bendings){
 }
 ///// End Bending Stat /////
 
+
+
 ///// Start TOTAL Stat /////
-
 $totalHours = ($hourlyHours + $bendingHours);
-
 $totalRate = $totalHours * $RATE_PER_HOUR;
+
+if ($totalHours > 0){
+    $TotalItemsPerHour = round($product / $totalHours, 2);
+} else {
+    $TotalItemsPerHour = 0;
+}
 
 if ($totalRate > 0){
     $upRate = (($totalRate * 1.1) + 0.5) - $product;
 
     if( ($product / $totalRate) >= 1 ){
-        $bonus = intval((($product / $totalRate) - 1) * 100);
+        // $bonus = intval((($product / $totalRate) - 1) * 100);
+        $bonus = intval( (($TotalItemsPerHour / $RATE_PER_HOUR) - 1) * 100 );
     }else{
         $bonus = 0;
     }
@@ -120,10 +128,8 @@ $totalPay = ($hourlyPay + $bendingPay) + ($payPerHours * ($bonus / 100));
 
 if ($totalHours > 0){
     $totalPPH = round($totalPay / $totalHours);
-    $TotalItemsPerHour = $product / $totalHours;
 } else {
     $totalPPH = 0;
-    $TotalItemsPerHour = 0;
 }
 
 if ($product > 0){
@@ -132,10 +138,8 @@ if ($product > 0){
     $TotalMoneyPerItem = 0;
 }
 
-
 $amountPay = $payment['prepaid'] + $payment['salary'] + $payment['bonus'];
 $diffPay = $amountPay - $totalPay;
-
 ///// End TOTAL Stat /////
 
 
