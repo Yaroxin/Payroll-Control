@@ -8,23 +8,6 @@ if (!empty($_POST["workDayId"]) && !empty($_POST["workDayTable"])) {
     if (!$workday){
        $result = 'noData';
     } else {
-        // if($_POST["workDayTable"] == 'hourly'){
-        //     if(($_POST["Hours"] != 0) && ($_POST["PayPerHour"] != 0)){
-        //         $workday['hours'] = $_POST["Hours"];
-        //         $workday['payperhour'] = $_POST["PayPerHour"];
-        //         $workday['bonus'] = $_POST["bonus"];
-        //         $workday['fine'] = $_POST["fine"];
-        //         R::store($workday);
-        //         $result = ($_POST["Date"] . ':' . 'save');
-        //     }else{
-        //         R::trash($workday);
-        //         $result = ($_POST["Date"] . ':' . 'delete');
-        //     }            
-        // }
-
-        // $val =  $_POST["item1count"] + $_POST["item2count"] + $_POST["item3count"] + $_POST["item4count"] + $_POST["item5count"];
-        // $result = $_POST["Hours"] . ' - ' . $val;
-
         if($_POST["workDayTable"] == 'bending'){
             
             if($_POST["Hours"] != 0){
@@ -39,6 +22,12 @@ if (!empty($_POST["workDayId"]) && !empty($_POST["workDayTable"])) {
                     $workday['hourlypay'] = $_POST["hourlyPayValue"];
                 }else{
                     $workday['hourlypay'] = 0;
+                }
+
+                if($_POST["useInCalc"] == 'on'){
+                    $workday['useincalc'] = 1;
+                }else{
+                    $workday['useincalc'] = 0;
                 }
 
                 $workday['title'] = 'Гиб(Рамы)';

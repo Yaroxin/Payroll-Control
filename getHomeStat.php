@@ -48,6 +48,7 @@
                 $fine = $bending['fine'];
                 $itemType = $bending['hourlypay'];
                 $extraShift = $bending['extrashift'];
+                $useInCalc = $bending['useincalc'];
 
                 array_push($workTitles, $bending['title']);
                 array_push($workTypes, $bending['type']);

@@ -76,7 +76,15 @@
                     <td colspan="2"><input id="extraShiftValue" inputmode="decimal" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $settings[4]['value']; ?>" maxlength="4" disabled onchange="reCalculate(this, <?php echo $settings[1]['value'];?>);"></td>
                 <?php endif;?>            
             <input type="hidden" id="extraShiftSet" name="extraShiftSet" value="<?php echo $settings[4]['value']; ?>">
-        </tr> 
+        </tr>
+        <tr>
+            <td>Учитывать в расчетах</td>            
+            <?php if ($bending['useincalc'] == 0): ?>
+                <td colspan="3"><input type="checkbox" id="useInCalc" name="useInCalc" disabled></td>
+            <?php else:?>
+                <td colspan="3"><input type="checkbox" id="useInCalc" name="useInCalc" checked disabled></td>
+            <?php endif;?>
+        </tr>
         <tr>
             <td colspan="4"></td>
         </tr>  

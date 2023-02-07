@@ -1,6 +1,7 @@
 <?php
 
 $totalHours = 0; // Общее кол-во отработынных часов.
+$useInCalcHours = 0; // Часы учавствующие в расчетах месячной премии.
 $totalPay = 0; // Общая сумма. Включает все доп. и премии.
 
 $totalPPH = 0;
@@ -8,7 +9,8 @@ $totalRate = 0;
 $totalItems = 0;
 $upRate = 0;
 $bonus = 0;
-$product = 0;
+$product = 0;           // Общее кол-во единиц.
+$useInCalcProduct = 0;  // Единицы учавствующие в расчетах месячной премии.
 $TotalItemsPerHour = 0;
 $TotalMoneyPerItem = 0;
 
@@ -71,6 +73,16 @@ if($bendings){
                     ($bending['item3count'] * $bending['item3factor']) +
                     ($bending['item4count'] * $bending['item4factor']) +
                     ($bending['item5count'] * $bending['item5factor']);
+
+        if($bending['useincalc'] == 1){
+            $useInCalcHours += $bending['hours'];
+
+            $useInCalcProduct += ($bending['item1count'] * $bending['item1factor']) +
+                                ($bending['item2count'] * $bending['item2factor']) +
+                                ($bending['item3count'] * $bending['item3factor']) +
+                                ($bending['item4count'] * $bending['item4factor']) +
+                                ($bending['item5count'] * $bending['item5factor']);
+        }
               
         if($bending['hourlypay'] == 0){
             $bendingPay +=
@@ -95,7 +107,7 @@ if($bendings){
 
 ///// Start TOTAL Stat /////
 $totalHours = ($hourlyHours + $bendingHours);
-$totalRate = $totalHours * $RATE_PER_HOUR;
+$totalRate = $totalHours * $RATE_PER_HOUR; // Норма единиц
 
 if ($totalHours > 0){
     $TotalItemsPerHour = round($product / $totalHours, 2);
@@ -104,11 +116,15 @@ if ($totalHours > 0){
 }
 
 if ($totalRate > 0){
-    $upRate = (($totalRate * 1.1) + 0.5) - $product;
-
-    if( ($product / $totalRate) >= 1 ){
-        // $bonus = intval((($product / $totalRate) - 1) * 100);
-        $bonus = intval( (($TotalItemsPerHour / $RATE_PER_HOUR) - 1) * 100 );
+    $upRate = (($totalRate * (($MIN_BONUS / 100) + 1)) + 0.5) - $product;
+   
+    if( (($product / $totalRate) - 1) * 100 >= $MIN_BONUS ){
+        if($settings[7]['value'] == '1'){
+            $bonus = round( (($TotalItemsPerHour / $RATE_PER_HOUR) - 1) * 100, 0 );
+        }
+        if($settings[7]['value'] == '0'){
+            $bonus = round( ((round($useInCalcProduct / $useInCalcHours, 2) / $RATE_PER_HOUR) - 1) * 100, 0 ); 
+        }        
     }else{
         $bonus = 0;
     }
@@ -124,7 +140,8 @@ if ($totalRate > 0){
     $bonus = 0;
 }
 
-$totalPay = ($hourlyPay + $bendingPay) + ($payPerHours * ($bonus / 100));
+// $totalPay = ($hourlyPay + $bendingPay) + ($payPerHours * ($bonus / 100));
+$totalPay = ($hourlyPay + $bendingPay) + ($THEORETICAL_SALARY * ($bonus / 100));
 
 if ($totalHours > 0){
     $totalPPH = round($totalPay / $totalHours);

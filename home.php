@@ -17,6 +17,7 @@
         }        
         R::storeAll($newSettings);
     }
+    // var_dump($MIN_BONUS);
 ?>
 
 
@@ -53,7 +54,7 @@
                             <div id="paymentDitails" class="paymentDitails hide">
                                 <div class="paymentDitailsItem"><?php echo number_format($payPerHours, 0, ',', ' ');?> &#8381;</div>
                                 <div class="paymentDitailsItem"><?php echo number_format($bendingBonus, 0, ',', ' ');?> &#8381;</div>
-                                <div class="paymentDitailsItem"><?php echo number_format(($payPerHours * ($bonus / 100)), 0, ',', ' ');?> &#8381;</div>
+                                <div class="paymentDitailsItem"><?php echo number_format(($THEORETICAL_SALARY * ($bonus / 100)), 0, ',', ' ');?> &#8381;</div>
                             </div>
                             <?php if($amountPay <> 0): ?>
                                 <?php if($diffPay > 0): ?>

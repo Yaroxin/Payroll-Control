@@ -17,6 +17,18 @@ $( "#bonusBlock" ).click(function() {
     }
 });
 
+$( "#bonusCalcBlock" ).click(function() { 
+    let bonusCalcBlockHidden = document.getElementById('bonusCalcBlockHidden');
+
+    if (this.checked == true){
+        bonusCalcBlockHidden.value = "1";        
+    }
+
+    if (this.checked == false){
+        bonusCalcBlockHidden.value = "0";
+    }
+});
+
 $( "#homeAmountPay" ).click(function() { 
     let paymentDitails = document.getElementById('paymentDitails');
 

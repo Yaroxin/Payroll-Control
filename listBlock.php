@@ -1,10 +1,15 @@
-<li class="listBlockItem" onclick="showMoreItemInfo('<?php echo $itemID; ?>');">
-<?php if($extraShift == 0): ?>
-    <div class="brieflyItemInfo mainShift">
+<?php if($useInCalc == 1): ?>
+    <li class="listBlockItem" onclick="showMoreItemInfo('<?php echo $itemID; ?>');">
 <?php endif; ?>
-<?php if($extraShift > 0): ?>
-    <div class="brieflyItemInfo extraShift">
+<?php if($useInCalc == 0): ?>
+    <?php if($settings[7]['value'] == 0): ?>
+        <li class="listBlockItem notUseInCalc" onclick="showMoreItemInfo('<?php echo $itemID; ?>');">
+    <?php else: ?>
+        <li class="listBlockItem" onclick="showMoreItemInfo('<?php echo $itemID; ?>');">
+    <?php endif; ?>
 <?php endif; ?>
+
+    <div class="brieflyItemInfo">
         <?php 
             ksort($workTT);
             foreach($workTT as $title => $type): 
@@ -21,7 +26,13 @@
                 $itemTypeImg = 'img/clock.png';
             }            
         ?>
-        <div class="itemType">
+
+        <?php if($type == 'День'): ?>
+        <div class="itemType mainShift">
+        <?php endif; ?>
+        <?php if($type == 'Ночь'): ?>
+        <div class="itemType nightShift">
+        <?php endif; ?>
             <div class="workTime">
                 <img src="<?php echo $itemTypeImg; ?>" alt="icon">                  
             </div>
@@ -31,12 +42,21 @@
         </div>
         <div class="itemDate">
             <?php echo date( "d.m.Y", strtotime($workShift)) ;?>  
-            <div class="itemDesc">            
-                <?php echo $title; ?>
+            <div class="itemDesc">
+                <?php if($extraRate > 0): ?>
+                    <div class="homeExtraRate">
+                        +<?php echo $extraRate;?>%
+                    </div>
+                <?php else: ?>
+                    <?php if($useInCalc == 0): ?>
+                        <?php if($settings[7]['value'] == 0): ?>
+                            <div class="homeExtraRate">не учтён</div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
             </div>          
             <?php endforeach; ?>
         </div>
-
 
         <div class="itemHours">
             <?php echo $dayHours;?>
@@ -44,9 +64,6 @@
         </div>
         <div class="itemPay">
             <?php echo $product;?>
-            <?php if($extraRate > 0): ?>
-            <div class="homeExtraRate">+<?php echo $extraRate;?>%</div>
-            <?php endif; ?>
             <div class="itemDesc">Едениц</div>            
         </div>
         <div class="itemPerHour">

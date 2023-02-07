@@ -24,6 +24,12 @@ if (isset($_POST["WorkType"]) && isset($_POST["Date"]) ) {
             }else{
                 $workShift['hourlypay'] = 0;
             }
+
+            if($_POST["useInCalc"] == 'on'){
+                $workShift['useincalc'] = 1;
+            }else{
+                $workShift['useincalc'] = 0;
+            }
             
             $workShift['title'] = 'Гиб(Рамы)';            
             $workShift['hours'] = $_POST["Hours"];

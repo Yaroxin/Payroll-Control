@@ -60,6 +60,10 @@
             <td colspan="2"><input id="extraShiftValue" inputmode="decimal" pattern="[0-9]*" class="WorkDayListItem forZero" type="text" name="extraShiftValue" value="<?php echo $settings[4]['value']; ?>" maxlength="4"></td>
         </tr> 
         <tr>
+            <td>Учитывать в расчетах</td>
+            <td colspan="3"><input type="checkbox" id="useInCalc" name="useInCalc" checked></td>
+        </tr> 
+        <tr>
             <td colspan="4"></td>
         </tr>  
         <tr>

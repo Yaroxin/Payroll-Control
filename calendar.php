@@ -60,7 +60,7 @@
                                         if (in_array($week[$i][$j], $WorkDate)){
                                             $DayClass = 'workDayClass';
                                             $CurDate = date('Y-m-d', strtotime ($_GET['year'].'-'.$_GET['month'].'-'.$week[$i][$j]));
-                                            $CurDay = R::getCol("SELECT type FROM `hourly` WHERE date ='" .$CurDate."' UNION SELECT type FROM `bending` WHERE date ='" .$CurDate."'");
+                                            $CurDay = R::getCol("SELECT type FROM `bending` WHERE date ='" .$CurDate."'");
                                             if (count($CurDay) > 1){
                                                 $DayClass = 'mixDayClass';
                                             }else{

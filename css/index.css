@@ -450,19 +450,26 @@
 .calStatBlock{
     align-items: center;
     display: flex;
-    justify-content: space-around;    
+    justify-content: space-between;    
+}
+
+.mainShift,
+.extraShift,
+.nightShift{
+    border-left: 5px solid;
+    padding-left: 10px;
 }
 
 .mainShift{
-    border-left: 3px solid #ceffb0;
+    border-color: #ceffb0;
 }
 
 .extraShift{
-    border-left: 3px solid #fff4b0;
+    border-color: #fff4b0;
 }
 
 .nightShift{
-    border-left: 3px solid #227eca;
+    border-color: #7cd5f7;
 }
 
 .moreItems{
@@ -637,7 +644,8 @@
 #hourlyPayCheck,
 #extraShiftCheck,
 #addHourlyPayCheck,
-#addExtraShiftCheck{
+#addExtraShiftCheck,
+#useInCalc{
     height: 20px;
     width: 20px;
 }
@@ -693,9 +701,20 @@
 }
 
 .homeExtraRate{
-    font-size: 12px;
-    padding: 2px 0px;
+    font-size: 16px;
+    padding: 4px 0px;
 }
+
+.notUseInCalc{
+    background-color: #ff00001a;
+    border: 1px solid #f70101;
+}
+
+
+
+
+
+
 
 @media (min-width: 1200px) {
     .wrapper{

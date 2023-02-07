@@ -82,7 +82,7 @@
                                 <input id="extrashift" class="settingsInput" inputmode="decimal" type="text" value="<?php echo $settings[4]['value']; ?>" name="extrashift" placeholder="Доп. смена">
                             </div>
                             <div class="settingBlockRight">
-                                <label class="bonusSettingsLabel" for="bonus">Премия, %:</label>
+                                <label class="bonusSettingsLabel" for="bonus">Мин. премия, %:</label>
                                 <input id="bonus" class="settingsInput" inputmode="decimal" type="text" value="<?php echo $settings[2]['value']; ?>" name="bonus" placeholder="Премия %">
                             </div>                            
                         </div>                        
@@ -107,6 +107,17 @@
                             <?php endif; ?>                              
                                 <label class="extraBlocksLabel" for="productBlock">Показывать блок: "Продукция"</label>
                                 <input id="productBlockHidden" type="hidden" name="productBlock" value="<?php echo $settings[6]['value']; ?>">
+                        </div>                     
+
+                        <div class="settingBlock">
+                            <?php if($settings[7]['value'] == '0'): ?>
+                            <input id="bonusCalcBlock" class="extraBlocks" type="checkbox" name="bonusCalcBlock">  
+                            <?php endif; ?>
+                            <?php if($settings[7]['value'] == '1'): ?>
+                            <input id="bonusCalcBlock" class="extraBlocks" type="checkbox" checked name="bonusCalcBlock">  
+                            <?php endif; ?>                        
+                            <label class="extraBlocksLabel" for="bonusCalcBlock">Учитывать все смены</label>
+                            <input id="bonusCalcBlockHidden" type="hidden" name="bonusCalcBlock" value="<?php echo $settings[7]['value']; ?>">
                         </div>                     
 
                         <input id="saveSettings" class="saveSetButton" type="submit" name="saveSettings" value="Сохранить">
